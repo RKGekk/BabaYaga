@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FastDelegate">
+      <UniqueIdentifier>{d6decb8f-1571-4548-84a9-80a401aa1981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{b9cd9980-9db6-4cad-b260-247450125ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TinyXml">
+      <UniqueIdentifier>{ab180888-bc20-4563-9c59-881906fcacbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GZip">
+      <UniqueIdentifier>{6fec1642-a1e0-4dac-80a4-c5c5d28e40db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{0351976e-9049-4bb1-a844-fcc38444f67f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TinyObjLoader">
+      <UniqueIdentifier>{5bda17e4-ed69-4690-928c-05d16926ddad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{0d737dde-e65c-41a4-9537-7adc6c200b18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawable">
+      <UniqueIdentifier>{5e95e72d-85ca-40dd-b6ab-cee76e61e4ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindable">
+      <UniqueIdentifier>{841672f8-22e4-40ac-8a27-0b28734a783b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{155850fa-c5e9-4d58-b4ac-d745143cbb97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ActorManager">
+      <UniqueIdentifier>{280424c0-7ad2-4ff1-99b3-d00918be0332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager">
+      <UniqueIdentifier>{cd9dfca6-bfcd-46af-b2a5-555bbb735a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProcessManager">
+      <UniqueIdentifier>{e3df2c08-6685-4336-a28d-4d409cbfafcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NodeManager">
+      <UniqueIdentifier>{f065f484-a72b-4f70-a2e6-7bb0a870673f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGUI">
+      <UniqueIdentifier>{e978b999-7063-47be-b7a5-c37964d67713}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FastDelegate.h">
+      <Filter>FastDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="FastDelegateBind.h">
+      <Filter>FastDelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="stringUtility.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="memoryUtility.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="crc32.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="deflate.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="gzguts.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="inffast.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="inffixed.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="inflate.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="inftrees.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="trees.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="zconf.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="zutil.h">
+      <Filter>GZip</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTimer.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="InputClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineOptions.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureHolder.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShaderClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DxException.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorIntegers.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="GDIPlusManager.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="tiny_obj_loader.h">
+      <Filter>TinyObjLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedTriangleList.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Bindable.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="cbPerObject.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderResource.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene1.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SamplerState.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryGenerator.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DDSTextureLoader.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Sky.h">
+      <Filter>Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthStencilState.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="RasterizerState.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="cbPerFrame.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="MoonCrate.h">
+      <Filter>Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="BlendState.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelConstantBuffer.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexConstantBuffer.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorComponent.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="HashedString.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorFactory.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventManager.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventData.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEventData.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EvtData_Destroy_Actor.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EvtData_Modified_Render_Component.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EvtData_Move_Actor.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EvtData_New_Actor.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EvtData_Environment_Loaded.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EvtData_Request_New_Actor.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Process.h">
+      <Filter>ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessManager.h">
+      <Filter>ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CountProcess.h">
+      <Filter>ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEngineLogic.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEngineState.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTree.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EvtData_New_Render_Component.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ISceneNode.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneNode.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderPass.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneNodeProperties.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderComponentInterface.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseRenderComponent.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderState.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="LightNode.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="LightProperties.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixStack.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="RootNode.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraNode.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderHolder.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderClass.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene3.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11Drawable.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11Mesh.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderComponent.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeCameraNode.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericObjectFactory.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="imconfig.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_dx11.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_win32.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_internal.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_rectpack.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_textedit.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_truetype.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="stringUtility.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="adler32.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="compress.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="crc32.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="deflate.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="gzclose.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="gzlib.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="gzread.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="gzwrite.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="infback.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="inffast.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="inflate.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="inftrees.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="trees.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="uncompr.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="zutil.c">
+      <Filter>GZip</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="InputClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineOptions.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureHolder.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShaderClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DxException.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="GDIPlusManager.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="tiny_obj_loader.cpp">
+      <Filter>TinyObjLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Topology.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderResource.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene1.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SamplerState.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryGenerator.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DDSTextureLoader.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Sky.cpp">
+      <Filter>Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthStencilState.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="RasterizerState.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="MoonCrate.cpp">
+      <Filter>Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="BlendState.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>ActorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="HashedString.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorComponent.cpp">
+      <Filter>ActorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorFactory.cpp">
+      <Filter>ActorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>ActorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="IEventManager.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Process.cpp">
+      <Filter>ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessManager.cpp">
+      <Filter>ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CountProcess.cpp">
+      <Filter>ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseEngineLogic.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTree.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneNode.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneNodeProperties.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseRenderComponent.cpp">
+      <Filter>ActorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="LightNode.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="RootNode.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraNode.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderClass.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderHolder.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene3.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D11Drawable.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRenderComponent.cpp">
+      <Filter>ActorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D11Mesh.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeCameraNode.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_demo.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_draw.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_dx11.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_win32.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_widgets.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EngineOptions.xml">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="10.dds">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="SkyPixelShader.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="SkyVertexShader.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="D.bmp">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="MoonCrate.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="MoonCrate.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="BasicNormalMapPixelShader.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="BasicNormalMapVertexShader.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="MeshRenderComponent.xml">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="World1.xml">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+</Project>
