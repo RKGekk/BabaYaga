@@ -3,3 +3,12 @@
 ################################################################################
 
 *.suo
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+*.tlog
+/FirstEngine/x64/Debug
+/x64/Debug
+/.vs/FirstEngine/v16/ipch/AutoPCH/b057f305a6ff6d3e/MATRIXSTACK.ipch
+*.ipch

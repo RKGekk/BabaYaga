@@ -308,6 +308,7 @@
     <ClCompile Include="InputLayout.cpp" />
     <ClCompile Include="LightNode.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MatrixStack.cpp" />
     <ClCompile Include="MeshRenderComponent.cpp" />
     <ClCompile Include="ModelClass.cpp" />
     <ClCompile Include="MoonCrate.cpp" />

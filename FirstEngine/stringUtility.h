@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+#include <iomanip>
 #include <regex>
 #include <string>
 #include <sstream>
@@ -37,3 +39,9 @@ std::string ToStr(const DirectX::XMFLOAT3& vec);
 void Split(const std::string& str, std::vector<std::string>& vec, char delimiter);
 void split(const std::string& in, std::vector<std::string>& out, const std::string& token);
 std::vector<std::string> splitR(const std::string& input, const std::string& regex);
+
+std::string fixedfloat(float value, int precision);
+std::ostream& operator<<(std::ostream& os, const DirectX::XMFLOAT3& v);
+std::ostream& operator<<(std::ostream& os, DirectX::FXMVECTOR v);
+std::ostream& operator<<(std::ostream& os, DirectX::XMFLOAT4X4 m);
+std::ostream& operator<<(std::ostream& os, DirectX::CXMMATRIX m);
