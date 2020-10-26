@@ -1,43 +1,29 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 #include "IEventData.h"
 #include "BaseEventData.h"
+#include "Actor.h"
 
-// Sent when actors are destroyed	
+// Sent when actors are destroyed
 class EvtData_Destroy_Actor : public BaseEventData {
-    unsigned int m_id;
-    const std::string m_eventName;
+    ActorId m_id;
 
 public:
     static const EventTypeId sk_EventType = 0x77dd2b3a;
+    static const std::string sk_EventName;
 
-    explicit EvtData_Destroy_Actor(unsigned int id = 0) : m_eventName("EvtData_Destroy_Actor") {
-        m_id = id;
-    }
+    explicit EvtData_Destroy_Actor(ActorId id = 0);
 
-    virtual const EventTypeId& VGetEventType() const {
-        return sk_EventType;
-    }
+    virtual const EventTypeId& VGetEventType() const;
+    virtual IEventDataPtr VCopy() const;
+    virtual void VSerialize(std::ostream& out) const;
+    virtual void VDeserialize(std::istream& in);
+    virtual const std::string& GetName() const;
 
-    virtual IEventDataPtr VCopy(void) const {
-        return IEventDataPtr(new EvtData_Destroy_Actor(m_id));
-    }
+    ActorId GetId() const;
 
-    virtual void VSerialize(std::ostream& out) const {
-        out << m_id;
-    }
-
-    virtual void VDeserialize(std::istream& in) {
-        in >> m_id;
-    }
-
-    virtual const std::string& GetName() const {
-        return m_eventName;
-    }
-
-    unsigned int GetId() const {
-        return m_id;
-    }
+    friend std::ostream& operator<<(std::ostream& os, const EvtData_Destroy_Actor& evt);
 };

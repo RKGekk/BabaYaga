@@ -8,8 +8,9 @@
 #include "GenericObjectFactory.h"
 
 extern GenericObjectFactory<IEventData, EventTypeId> g_eventFactory;
-#define REGISTER_EVENT(eventClass) g_eventFactory.Register<eventClass>(eventClass::sk_EventType)
+#define REGISTER_EVENT(eventClass) g_eventFactory.Register<eventClass>(eventClass::sk_EventType, eventClass::sk_EventName)
 #define CREATE_EVENT(eventType) g_eventFactory.Create(eventType)
+#define GET_EVENT_NAME(eventType) g_eventFactory.GetName(eventType)
 
 const float MAX_EVENTS_DURATION = 0.02f; // in seconds
 
@@ -31,7 +32,7 @@ const float MAX_EVENTS_DURATION = 0.02f; // in seconds
 class IEventManager {
 public:
 
-	explicit IEventManager(const char* pName, bool setAsGlobal);
+	explicit IEventManager(bool setAsGlobal);
 	virtual ~IEventManager();
 
 	// Registers a delegate function that will get called when the event type is triggered.  Returns true if 

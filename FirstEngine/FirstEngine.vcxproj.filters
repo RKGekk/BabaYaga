@@ -659,6 +659,27 @@
     <ClCompile Include="MatrixStack.cpp">
       <Filter>NodeManager</Filter>
     </ClCompile>
+    <ClCompile Include="EvtData_Environment_Loaded.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EvtData_New_Actor.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EvtData_Destroy_Actor.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EvtData_Modified_Render_Component.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EvtData_Move_Actor.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EvtData_New_Render_Component.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EvtData_Request_New_Actor.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="EngineOptions.xml">

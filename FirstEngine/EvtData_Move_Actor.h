@@ -2,62 +2,32 @@
 
 #include <DirectXMath.h>
 #include <memory>
+#include <string>
 
 #include "BaseEventData.h"
+#include "Actor.h"
+#include "stringUtility.h"
 
 // Sent when actors are moved
 class EvtData_Move_Actor : public BaseEventData {
-    unsigned int m_id;
+    ActorId m_id;
     DirectX::XMFLOAT4X4 m_matrix;
-    const std::string m_eventName;
 
 public:
     static const EventTypeId sk_EventType = 0xeeaa0a40;
+    static const std::string sk_EventName;
 
-    virtual const EventTypeId& VGetEventType() const {
-        return sk_EventType;
-    }
+    EvtData_Move_Actor();
+    EvtData_Move_Actor(ActorId id, const DirectX::XMFLOAT4X4& matrix);
 
-    EvtData_Move_Actor() {
-        m_id = 0;
-    }
+    virtual const EventTypeId& VGetEventType() const;
+    virtual void VSerialize(std::ostream& out) const;
+    virtual void VDeserialize(std::istream& in);
+    virtual IEventDataPtr VCopy() const;
+    virtual const std::string& GetName(void) const;
 
-    EvtData_Move_Actor(unsigned int id, const DirectX::XMFLOAT4X4& matrix) : m_eventName("EvtData_Move_Actor") {
-        m_id = id;
-        m_matrix = matrix;
-    }
+    ActorId GetId() const;
+    const DirectX::XMFLOAT4X4& GetMatrix() const;
 
-    virtual void VSerialize(std::ostream& out) const {
-        out << m_id << " ";
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 4; ++j) {
-                out << m_matrix.m[i][j] << " ";
-            }
-        }
-    }
-
-    virtual void VDeserialize(std::istream& in) {
-        in >> m_id;
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 4; ++j) {
-                in >> m_matrix.m[i][j];
-            }
-        }
-    }
-
-    virtual IEventDataPtr VCopy() const {
-        return IEventDataPtr(new EvtData_Move_Actor(m_id, m_matrix));
-    }
-
-    virtual const std::string& GetName(void) const {
-        return m_eventName;
-    }
-
-    unsigned int GetId() const {
-        return m_id;
-    }
-
-    const DirectX::XMFLOAT4X4& GetMatrix() const {
-        return m_matrix;
-    }
+    friend std::ostream& operator<<(std::ostream& os, const EvtData_Move_Actor& evt);
 };

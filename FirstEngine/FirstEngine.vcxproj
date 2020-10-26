@@ -282,6 +282,13 @@
     <ClCompile Include="DxException.cpp" />
     <ClCompile Include="EngineOptions.cpp" />
     <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="EvtData_Destroy_Actor.cpp" />
+    <ClCompile Include="EvtData_Environment_Loaded.cpp" />
+    <ClCompile Include="EvtData_Modified_Render_Component.cpp" />
+    <ClCompile Include="EvtData_Move_Actor.cpp" />
+    <ClCompile Include="EvtData_New_Actor.cpp" />
+    <ClCompile Include="EvtData_New_Render_Component.cpp" />
+    <ClCompile Include="EvtData_Request_New_Actor.cpp" />
     <ClCompile Include="FreeCameraNode.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="GDIPlusManager.cpp" />

@@ -1,26 +1,21 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 #include "BaseEventData.h"
 
 // This event is sent when a new game is started
 class EvtData_Environment_Loaded : public BaseEventData {
-	const std::string m_eventName;
 public:
 	static const EventTypeId sk_EventType = 0x8E2AD6E6;
+	static const std::string sk_EventName;
 
-	EvtData_Environment_Loaded() : m_eventName("EvtData_Environment_Loaded") {}
+	EvtData_Environment_Loaded();
 
-	virtual const EventTypeId& VGetEventType() const {
-		return sk_EventType;
-	}
+	virtual const EventTypeId& VGetEventType() const;
+	virtual IEventDataPtr VCopy() const;
+	virtual const std::string& GetName() const;
 
-	virtual IEventDataPtr VCopy() const {
-		return IEventDataPtr(new EvtData_Environment_Loaded());
-	}
-
-	virtual const std::string& GetName() const {
-		return m_eventName;
-	}
+	friend std::ostream& operator<<(std::ostream& os, const EvtData_Environment_Loaded& evt);
 };

@@ -6,7 +6,20 @@
 
 #include "tinyxml.h"
 
+class Actor;
 class ActorComponent;
+
+using ActorId = unsigned int;
+using ComponentId = unsigned int;
+
+const ActorId INVALID_ACTOR_ID = 0;
+const ComponentId INVALID_COMPONENT_ID = 0;
+
+using StrongActorPtr = std::shared_ptr<Actor>;
+using WeakActorPtr = std::weak_ptr<Actor>;
+using StrongActorComponentPtr = std::shared_ptr<ActorComponent>;
+using WeakActorComponentPtr = std::weak_ptr<ActorComponent>;
+using ActorComponents = std::map<ComponentId, StrongActorComponentPtr>;
 
 class Actor {
 

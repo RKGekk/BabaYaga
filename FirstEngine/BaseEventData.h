@@ -15,7 +15,6 @@ public:
 		return m_timeStamp;
 	}
 
-	// Serializing for network input / output
 	virtual void VSerialize(std::ostream& out) const {}
 	virtual void VDeserialize(std::istream& in) {}
 };

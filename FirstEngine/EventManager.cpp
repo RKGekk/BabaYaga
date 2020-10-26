@@ -1,6 +1,30 @@
 #include "EventManager.h"
 
-EventManager::EventManager(const char* pName, bool setAsGlobal) : IEventManager(pName, setAsGlobal) {
+std::ostream& operator<<(std::ostream& os, const EventManager& mgr) {
+    std::ios::fmtflags oldFlag = os.flags();
+
+    std::cout << "EventManager name: " << mgr.m_eventManagerName << std::endl;
+    std::cout << "Contains listeners:" << std::endl;
+    int counter = 0;
+    for (const auto& [eventTypeId, listenerFx] : mgr.m_eventListeners) {
+        std::cout << ++counter << ") Listener for event type id: " << eventTypeId << " with name: " << GET_EVENT_NAME(eventTypeId) << std::endl;
+    }
+    std::cout << "Current active queue: " << mgr.m_activeQueue << std::endl;
+    std::cout << "Events queue contains:" << std::endl;
+    int queueCounter = 0;
+    int eventCounter = 0;
+    for (const auto& currentQueue : mgr.m_queues) {
+        std::cout << queueCounter++ << ") queue ->" << std::endl;
+        for (const auto& currentEvent : currentQueue) {
+            std::cout << "\t" << ++eventCounter << ") event id: " << currentEvent->VGetEventType() << " at " << currentEvent->GetTimeStamp().time_since_epoch().count() << "ns " << " with name: " << currentEvent->GetName() << std::endl;
+        }
+    }
+
+    os.flags(oldFlag);
+    return os;
+}
+
+EventManager::EventManager(const std::string& pName, bool setAsGlobal) : IEventManager(setAsGlobal), m_eventManagerName(pName) {
     m_activeQueue = 0;
 }
 

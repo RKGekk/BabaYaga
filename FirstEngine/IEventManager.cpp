@@ -8,10 +8,10 @@ IEventManager* IEventManager::Get() {
 }
 
 IEventDataPtr IEventManager::Create(EventTypeId eventType) {
-	return IEventDataPtr(g_eventFactory.Create(eventType));
+	return IEventDataPtr(CREATE_EVENT(eventType));
 }
 
-IEventManager::IEventManager(const char* pName, bool setAsGlobal) {
+IEventManager::IEventManager(bool setAsGlobal) {
 	if (setAsGlobal) {
 		if (g_pEventMgr) {
 			delete g_pEventMgr;

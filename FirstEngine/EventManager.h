@@ -14,6 +14,7 @@ class EventManager : public IEventManager {
 
     std::map<EventTypeId, std::list<EventListenerDelegate>> m_eventListeners;
     GameTimer m_EventTimer;
+    const std::string m_eventManagerName;
 
     // There are two event queues here so that delegate methods can safely queue up new events. You can imagine an infinite loop where
     // two events queue up each other. Without two queues, the program would hang in an infinite loopand never break out of the event VUpdate() function.
@@ -21,8 +22,8 @@ class EventManager : public IEventManager {
     int m_activeQueue;  // index of actively processing queue; events enque to the opposing queue
 
 public:
-    explicit EventManager(const char* pName, bool setAsGlobal);
-    virtual ~EventManager(void);
+    explicit EventManager(const std::string& pName, bool setAsGlobal);
+    virtual ~EventManager();
 
     virtual bool VAddListener(const EventListenerDelegate& eventDelegate, const EventTypeId& type);
     virtual bool VRemoveListener(const EventListenerDelegate& eventDelegate, const EventTypeId& type);
@@ -32,4 +33,6 @@ public:
     virtual bool VAbortEvent(const EventTypeId& inType, bool allOfType);
 
     virtual bool VUpdate(float maxSec = MAX_EVENTS_DURATION);
+
+    friend std::ostream& operator<<(std::ostream& os, const EventManager& mgr);
 };
