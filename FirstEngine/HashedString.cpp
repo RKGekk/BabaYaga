@@ -18,6 +18,10 @@ bool HashedString::operator==(HashedString const& o) const {
 	return r;
 }
 
+void* HashedString::hash_name(const std::string& identStr) {
+	return hash_name(identStr.c_str());
+}
+
 void* HashedString::hash_name(char const* pIdentStr) {
 	// Relatively simple hash of arbitrary text string into a
 	// 32-bit identifier Output value is

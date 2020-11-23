@@ -1,11 +1,9 @@
 #include "Actor.h"
 #include "ActorComponent.h"
 
-Actor::Actor(unsigned int id) {
+Actor::Actor(ActorId id) {
     m_id = id;
     m_type = "Unknown";
-
-    //added post press - this is an editor helper
     m_resource = "Unknown";
 }
 
@@ -33,10 +31,18 @@ void Actor::Update(float deltaMs) {
     }
 }
 
-void Actor::AddComponent(std::shared_ptr<ActorComponent> pComponent) {
-    std::pair<std::map<unsigned int, std::shared_ptr<ActorComponent>>::iterator, bool> success = m_components.insert(std::make_pair(pComponent->VGetId(), pComponent));
+ActorId Actor::GetId() const {
+    return m_id;
 }
 
-const std::map<unsigned int, std::shared_ptr<ActorComponent>>* Actor::GetComponents() {
-    return &m_components;
+std::string Actor::GetType() const {
+    return m_type;
+}
+
+const ActorComponents& Actor::GetComponents() {
+    return m_components;
+}
+
+void Actor::AddComponent(StrongActorComponentPtr pComponent) {
+    std::pair<ActorComponents::iterator, bool> success = m_components.insert(std::make_pair(pComponent->VGetId(), pComponent));
 }

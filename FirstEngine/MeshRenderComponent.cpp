@@ -8,14 +8,14 @@
 #include "GraphicsClass.h"
 #include "D3DClass.h"
 
-const char* MeshRenderComponent::g_Name = "MeshRenderComponent";
+const std::string MeshRenderComponent::g_Name = "MeshRenderComponent";
 
 MeshRenderComponent::MeshRenderComponent() {
 	m_textureResource = "";
 	m_objResource = "";
 }
 
-const char* MeshRenderComponent::VGetName() const {
+const std::string& MeshRenderComponent::VGetName() const {
 	return g_Name;
 }
 

@@ -335,13 +335,19 @@ std::string fixedfloat(float value, int precision) {
 	}
 }
 
+std::ostream& operator<<(std::ostream& os, const DirectX::XMFLOAT2& v) {
+	std::ios::fmtflags oldFlag = os.flags();
+	os << "(" << fixedfloat(v.x, 6) << ", " << fixedfloat(v.y, 6) << ")";
+	os.flags(oldFlag);
+	return os;
+}
+
 std::ostream& operator<<(std::ostream& os, const DirectX::XMFLOAT3& v) {
 	std::ios::fmtflags oldFlag = os.flags();
 	os << "(" << fixedfloat(v.x, 6) << ", " << fixedfloat(v.y, 6) << ", " << fixedfloat(v.z, 6) << ")";
 	os.flags(oldFlag);
 	return os;
 }
-
 
 std::ostream& operator<<(std::ostream& os, DirectX::FXMVECTOR v) {
 	DirectX::XMFLOAT3 dest;
@@ -366,5 +372,16 @@ std::ostream& operator<<(std::ostream& os, DirectX::CXMMATRIX m) {
 	DirectX::XMFLOAT4X4 matrix;
 	DirectX::XMStoreFloat4x4(&matrix, m);
 	os << matrix;
+	return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const Vertex& v) {
+	std::ios::fmtflags oldFlag = os.flags();
+	os << "Vertext position: " << v.pos << std::endl;
+	os << "Vertext normal: " << v.n << std::endl;
+	os << "Vertext uv: " << v.t << std::endl;
+	os << "Vertext color: " << v.color << std::endl;
+	os << "Vertext tangent: " << v.tg << std::endl;
+	os.flags(oldFlag);
 	return os;
 }

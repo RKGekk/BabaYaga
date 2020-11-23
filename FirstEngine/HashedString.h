@@ -10,6 +10,7 @@ public:
 	const std::string& getStr() const;
 
 	static void* hash_name(char const* pIdentStr);
+	static void* hash_name(const std::string& identStr);
 
 	bool operator<(HashedString const& o) const;
 	bool operator==(HashedString const& o) const;

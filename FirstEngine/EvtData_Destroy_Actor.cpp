@@ -11,8 +11,8 @@ EvtData_Destroy_Actor::EvtData_Destroy_Actor(ActorId id) {
 }
 
 IEventDataPtr EvtData_Destroy_Actor::VCopy() const {
-        return IEventDataPtr(new EvtData_Destroy_Actor(m_id));
-    }
+    return IEventDataPtr(new EvtData_Destroy_Actor(m_id));
+}
 
 void EvtData_Destroy_Actor::VSerialize(std::ostream& out) const {
     out << m_id;

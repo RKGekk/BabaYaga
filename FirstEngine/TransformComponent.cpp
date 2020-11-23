@@ -1,13 +1,13 @@
 #include "TransformComponent.h"
 #include "stringUtility.h"
 
-const char* TransformComponent::g_Name = "TransformComponent";
+const std::string TransformComponent::g_Name = "TransformComponent";
 
-TransformComponent::TransformComponent(void) {
+TransformComponent::TransformComponent() {
     DirectX::XMStoreFloat4x4(&m_transform, DirectX::XMMatrixIdentity());
 }
 
-const char* TransformComponent::VGetName() const {
+const std::string& TransformComponent::VGetName() const {
     return g_Name;
 }
 

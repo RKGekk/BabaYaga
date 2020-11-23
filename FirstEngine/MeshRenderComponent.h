@@ -12,8 +12,8 @@ class MeshRenderComponent : public BaseRenderComponent {
     std::string m_vertexShaderResource;
 
 public:
-    static const char* g_Name;
-    virtual const char* VGetName() const;
+    static const std::string g_Name;
+    virtual const std::string& VGetName() const;
 
     MeshRenderComponent();
     const char* GetTextureResource();

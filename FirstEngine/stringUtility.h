@@ -9,6 +9,8 @@
 #include <Windows.h>
 #include <DirectXMath.h>
 
+#include "Vertex.h"
+
 #define MAX_DIGITS_IN_INT 12
 
 std::string ExePath();
@@ -41,7 +43,9 @@ void split(const std::string& in, std::vector<std::string>& out, const std::stri
 std::vector<std::string> splitR(const std::string& input, const std::string& regex);
 
 std::string fixedfloat(float value, int precision);
+std::ostream& operator<<(std::ostream& os, const DirectX::XMFLOAT2& v);
 std::ostream& operator<<(std::ostream& os, const DirectX::XMFLOAT3& v);
 std::ostream& operator<<(std::ostream& os, DirectX::FXMVECTOR v);
 std::ostream& operator<<(std::ostream& os, DirectX::XMFLOAT4X4 m);
 std::ostream& operator<<(std::ostream& os, DirectX::CXMMATRIX m);
+std::ostream& operator<<(std::ostream& os, const Vertex& v);

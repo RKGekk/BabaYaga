@@ -3,22 +3,20 @@
 #include "ActorComponent.h"
 #include <DirectXMath.h>
 
-//---------------------------------------------------------------------------------------------------------------------
 // This component implementation is a very simple representation of the physical aspect of an actor.  It just defines 
 // the transform and doesn't register with the physics system at all.
-//---------------------------------------------------------------------------------------------------------------------
 class TransformComponent : public ActorComponent {
 
 private:
     DirectX::XMFLOAT4X4 m_transform;
 
 public:
-    static const char* g_Name;
+    static const std::string g_Name;
 
     TransformComponent();
 
     virtual bool VInit(TiXmlElement* pData) override;
-    virtual const char* VGetName() const override;
+    virtual const std::string& VGetName() const override;
 
     // transform functions
     DirectX::XMFLOAT4X4 GetTransform4x4f() const;

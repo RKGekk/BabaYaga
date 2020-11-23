@@ -7,23 +7,23 @@ ActorComponent::~ActorComponent() {
 	m_pOwner.reset();
 }
 
-unsigned int ActorComponent::GetIdFromName(const char* componentStr) {
+ComponentId ActorComponent::GetIdFromName(const std::string& componentStr) {
 	void* rawId = HashedString::hash_name(componentStr);
-	return reinterpret_cast<unsigned int>(rawId);
+	return reinterpret_cast<ComponentId>(rawId);
 }
 
-unsigned int ActorComponent::VGetId() const {
+ComponentId ActorComponent::VGetId() const {
 	return GetIdFromName(VGetName());
 }
 
-void ActorComponent::SetOwner(std::shared_ptr<Actor> pOwner) {
+void ActorComponent::SetOwner(StrongActorPtr pOwner) {
 	m_pOwner = pOwner;
 }
 
-std::shared_ptr<Actor> ActorComponent::GetOwner() {
+StrongActorPtr ActorComponent::GetOwner() {
 	return m_pOwner;
 }
 
-unsigned int ActorComponent::GetOwnerId() {
+ActorId ActorComponent::GetOwnerId() {
 	return m_pOwner->GetId();
 }

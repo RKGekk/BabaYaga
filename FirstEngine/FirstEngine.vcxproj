@@ -170,6 +170,7 @@
     <ClInclude Include="EvtData_New_Actor.h" />
     <ClInclude Include="EvtData_New_Render_Component.h" />
     <ClInclude Include="EvtData_Request_New_Actor.h" />
+    <ClInclude Include="EvtData_Request_Start.h" />
     <ClInclude Include="FreeCameraNode.h" />
     <ClInclude Include="GenericObjectFactory.h" />
     <ClInclude Include="GeometryGenerator.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="LightNode.h" />
     <ClInclude Include="LightProperties.h" />
     <ClInclude Include="MatrixStack.h" />
+    <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="MeshRenderComponent.h" />
     <ClInclude Include="MoonCrate.h" />
     <ClInclude Include="Mouse.h" />
@@ -289,6 +291,7 @@
     <ClCompile Include="EvtData_New_Actor.cpp" />
     <ClCompile Include="EvtData_New_Render_Component.cpp" />
     <ClCompile Include="EvtData_Request_New_Actor.cpp" />
+    <ClCompile Include="EvtData_Request_Start.cpp" />
     <ClCompile Include="FreeCameraNode.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="GDIPlusManager.cpp" />
@@ -316,6 +319,7 @@
     <ClCompile Include="LightNode.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MatrixStack.cpp" />
+    <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="MeshRenderComponent.cpp" />
     <ClCompile Include="ModelClass.cpp" />
     <ClCompile Include="MoonCrate.cpp" />

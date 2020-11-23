@@ -399,6 +399,12 @@
     <ClInclude Include="imstb_truetype.h">
       <Filter>ImGUI</Filter>
     </ClInclude>
+    <ClInclude Include="EvtData_Request_Start.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshComponent.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -679,6 +685,12 @@
     </ClCompile>
     <ClCompile Include="EvtData_Request_New_Actor.cpp">
       <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EvtData_Request_Start.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshComponent.cpp">
+      <Filter>ActorManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

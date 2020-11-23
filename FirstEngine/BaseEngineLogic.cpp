@@ -14,7 +14,7 @@ BaseEngineLogic::~BaseEngineLogic() {
 	pEventMgr->VRemoveListener(fastdelegate::MakeDelegate(this, &BaseEngineLogic::MoveActorDelegate), EvtData_Move_Actor::sk_EventType);
 }
 
-bool BaseEngineLogic::Init(void) {
+bool BaseEngineLogic::Init() {
 	m_pActorFactory.reset(new ActorFactory);
 	m_pProcessManager.reset(new ProcessManager);
 

@@ -14,7 +14,7 @@ ActorFactory::ActorFactory() {
     m_componentFactory.Register<MeshRenderComponent>(ActorComponent::GetIdFromName(MeshRenderComponent::g_Name));
 }
 
-std::shared_ptr<Actor> ActorFactory::CreateActor(const char* actorResource, TiXmlElement* overrides, const DirectX::XMFLOAT4X4* pinitialTransform, const unsigned int serversActorId) {
+std::shared_ptr<Actor> ActorFactory::CreateActor(const char* actorResource, TiXmlElement* overrides, const DirectX::XMFLOAT4X4* pinitialTransform, const ActorId serversActorId) {
 
     TiXmlDocument xml;
     xml.LoadFile(actorResource);
@@ -26,7 +26,7 @@ std::shared_ptr<Actor> ActorFactory::CreateActor(const char* actorResource, TiXm
     }
 
     // create the actor instance
-    unsigned int nextActorId = serversActorId;
+    ActorId nextActorId = serversActorId;
     if (nextActorId == 0) {
         nextActorId = GetNextActorId();
     }
@@ -88,6 +88,9 @@ std::shared_ptr<ActorComponent> ActorFactory::VCreateComponent(TiXmlElement* pDa
     return pComponent;
 }
 
+std::shared_ptr<Actor> ActorFactory::CreateActor(const std::string& actorResource, TiXmlElement* overrides, const DirectX::XMFLOAT4X4* initialTransform, const ActorId serversActorId) {
+    return CreateActor(actorResource.c_str(), overrides, initialTransform, serversActorId);
+}
 
 void ActorFactory::ModifyActor(std::shared_ptr<Actor> pActor, TiXmlElement* overrides) {
     // Loop through each child element and load the component

@@ -25,14 +25,14 @@ class Actor {
 
 private:
 
-    std::string     m_resource;     // the XML file from which this actor was initialized (considered the "Archetype" file)
+    std::string m_resource; // the XML file from which this actor was initialized (considered the "Archetype" file)
 
-    unsigned int    m_id;           // unique id for the actor
-    std::string     m_type;
-    std::map<unsigned int, std::shared_ptr<ActorComponent>> m_components;   // all components this actor has
+    ActorId m_id; // unique id for the actor
+    std::string m_type;
+    ActorComponents m_components;   // all components this actor has
 
 public:
-    explicit Actor(unsigned int id);
+    explicit Actor(ActorId id);
     ~Actor();
 
     bool Init(TiXmlElement* pData);
@@ -40,14 +40,14 @@ public:
     void Destroy();
     void Update(float deltaMs);
 
-    unsigned int GetId() const { return m_id; }
-    std::string GetType() const { return m_type; }
+    unsigned int GetId() const;
+    std::string GetType() const;
 
     template <class ComponentType>
-    std::weak_ptr<ComponentType> GetComponent(unsigned int id) {
+    std::weak_ptr<ComponentType> GetComponent(ComponentId id) {
         auto findIt = m_components.find(id);
         if (findIt != m_components.end()) {
-            std::shared_ptr<ActorComponent> pBase(findIt->second);
+            StrongActorComponentPtr pBase(findIt->second);
             std::shared_ptr<ComponentType> pSub(std::static_pointer_cast<ComponentType>(pBase));  // cast to subclass version of the pointer
             std::weak_ptr<ComponentType> pWeakSub(pSub);  // convert strong pointer to weak pointer
             return pWeakSub;  // return the weak pointer
@@ -62,7 +62,7 @@ public:
         unsigned int id = ActorComponent::GetIdFromName(name);
         auto findIt = m_components.find(id);
         if (findIt != m_components.end()) {
-            std::shared_ptr<ActorComponent> pBase(findIt->second);
+            StrongActorComponentPtr pBase(findIt->second);
             std::shared_ptr<ComponentType> pSub(std::static_pointer_cast<ComponentType>(pBase));  // cast to subclass version of the pointer
             std::weak_ptr<ComponentType> pWeakSub(pSub);  // convert strong pointer to weak pointer
             return pWeakSub;  // return the weak pointer
@@ -72,7 +72,12 @@ public:
         }
     }
 
-    const std::map<unsigned int, std::shared_ptr<ActorComponent>>* GetComponents();
+    template <class ComponentType>
+    std::weak_ptr<ComponentType> GetComponent(const std::string& name) {
+        return GetComponent<ComponentType>(name.c_str());
+    }
 
-    void AddComponent(std::shared_ptr<ActorComponent> pComponent);
+    const ActorComponents& GetComponents();
+
+    void AddComponent(StrongActorComponentPtr pComponent);
 };
