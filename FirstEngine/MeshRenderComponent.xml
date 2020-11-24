@@ -5,7 +5,6 @@
   </TransformComponent>
   <MeshRenderComponent>
     <Color r="0.500000" g="0.500000" b="0.500000" a="1.000000" />
-    <Texture>NoTexture</Texture>
     <Obj>NoObj</Obj>
     <PixelShader>NoPShader</PixelShader>
     <VertexShader>NoVShader</VertexShader>

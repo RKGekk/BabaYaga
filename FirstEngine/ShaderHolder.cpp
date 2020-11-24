@@ -10,7 +10,10 @@ bool ShaderHolder::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceC
 	bool result;
 
 	for (const auto& shaderFilename : shaderFilenames) {
-		AddShader(device, deviceContext, shaderFilename);
+		result = AddShader(device, deviceContext, shaderFilename);
+		if (!result) {
+			return false;
+		}
 	}
 
 	return true;

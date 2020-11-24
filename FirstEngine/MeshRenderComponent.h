@@ -6,7 +6,6 @@
 #include "BaseRenderComponent.h"
 
 class MeshRenderComponent : public BaseRenderComponent {
-    std::string m_textureResource;
     std::string m_pixelShaderResource;
     std::string m_vertexShaderResource;
 
@@ -15,7 +14,6 @@ public:
     virtual const std::string& VGetName() const;
 
     MeshRenderComponent();
-    const char* GetTextureResource();
     const char* GetPixelShaderResource();
     const char* GetVertexShaderResource();
 

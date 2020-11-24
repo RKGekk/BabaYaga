@@ -25,7 +25,7 @@ D3D11Mesh::D3D11Mesh(BaseRenderComponent* renderComponent, DirectX::XMFLOAT4X4* 
 	ID3DBlob* ppsbc = pps->GetBytecode();
 	AddBind(std::move(pps));
 
-	std::unique_ptr<ShaderResource> srv0 = std::make_unique<ShaderResource>(device, TextureHolder::GetTexture(mrc->GetTextureResource()).GetTexture());
+	std::unique_ptr<ShaderResource> srv0 = std::make_unique<ShaderResource>(device, TextureHolder::GetTexture(mc->GetMaterials()[0].diffuse_texname).GetTexture());
 	AddBind(std::move(srv0));
 
 	std::unique_ptr<InputLayout> inputLayout = std::make_unique<InputLayout>(device, pvsbc);

@@ -10,18 +10,28 @@ bool TextureHolder::Initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	bool result;
 
 	for (const std::string& textureFilename : textureFilenames) {
-		result = LoadTexture(device, deviceContext, textureFilename);
-		if (!result) {
-			return false;
-		}
-
-		// Upload picture data to GPU memory
-		result = m_s_Instance->m_Textures[textureFilename].LoadToGPU(device, deviceContext, D3D11_USAGE_DEFAULT, 0);
+		result = AddTexture(device, deviceContext, textureFilename);
 		if (!result) {
 			return false;
 		}
 	}
 
+	return true;
+}
+
+bool TextureHolder::AddTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const std::string& textureFilename) {
+	if (m_s_Instance->m_Textures.count(textureFilename)) {
+		return true;
+	}
+	bool result = LoadTexture(device, deviceContext, textureFilename);
+	if (!result) {
+		return false;
+	}
+
+	result = m_s_Instance->m_Textures[textureFilename].LoadToGPU(device, deviceContext, D3D11_USAGE_DEFAULT, 0);
+	if (!result) {
+		return false;
+	}
 	return true;
 }
 
@@ -54,8 +64,6 @@ bool TextureHolder::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* devic
 TextureClass& TextureHolder::GetTexture(std::string const& filename) {
 	auto& m = m_s_Instance->m_Textures;
 	auto keyValuePair = m.find(filename);
-	// auto is equivalent of map<string, Texture>::iterator
-	// Did we find a match?
 	if (keyValuePair != m.end()) {
 		return keyValuePair->second;
 	}

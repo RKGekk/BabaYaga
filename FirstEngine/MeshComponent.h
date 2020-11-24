@@ -31,6 +31,7 @@ public:
 	}
 
 	IndexedTriangleList GetTriangleList(int shapeid = 0);
+	std::vector<tinyobj::material_t>& GetMaterials();
 
 	virtual bool VInit(TiXmlElement* pData) override;
 	virtual const std::string& VGetName() const override;

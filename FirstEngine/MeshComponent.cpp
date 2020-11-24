@@ -1,4 +1,6 @@
 #include "MeshComponent.h"
+#include "SystemClass.h"
+#include "GraphicsClass.h"
 
 const std::string MeshComponent::g_Name = "MeshComponent";
 
@@ -160,6 +162,10 @@ MeshComponent::IndexedTriangleList MeshComponent::GetTriangleList(int shapeid) {
 	return tl;
 }
 
+std::vector<tinyobj::material_t>& MeshComponent::GetMaterials() {
+	return m_materials;
+}
+
 bool MeshComponent::VInit(TiXmlElement* pData) {
 
 	TiXmlElement* pObjElement = pData->FirstChildElement("Obj");
@@ -172,7 +178,51 @@ bool MeshComponent::VInit(TiXmlElement* pData) {
 		return true;
 	}
 	std::string err;
-	return LoadObj(&m_attrib, &m_shapes, &m_materials, &err, fileName.c_str());
+	bool result = LoadObj(&m_attrib, &m_shapes, &m_materials, &err, fileName.c_str());
+	if(result) {
+		for(const auto& material : m_materials) {
+			if(!material.alpha_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.alpha_texname);
+			}
+			if (!material.ambient_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.ambient_texname);
+			}
+			if (!material.bump_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.bump_texname);
+			}
+			if (!material.diffuse_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.diffuse_texname);
+			}
+			if (!material.displacement_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.displacement_texname);
+			}
+			if (!material.emissive_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.emissive_texname);
+			}
+			if (!material.metallic_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.metallic_texname);
+			}
+			if (!material.normal_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.normal_texname);
+			}
+			if (!material.reflection_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.reflection_texname);
+			}
+			if (!material.roughness_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.roughness_texname);
+			}
+			if (!material.sheen_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.sheen_texname);
+			}
+			if (!material.specular_highlight_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.specular_highlight_texname);
+			}
+			if (!material.specular_texname.empty()) {
+				TextureHolder::AddTexture(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), material.specular_texname);
+			}
+		}
+	}
+	return result;
 }
 
 const std::string& MeshComponent::VGetName() const {

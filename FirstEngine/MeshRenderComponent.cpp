@@ -11,16 +11,10 @@
 
 const std::string MeshRenderComponent::g_Name = "MeshRenderComponent";
 
-MeshRenderComponent::MeshRenderComponent() {
-	m_textureResource = "";
-}
+MeshRenderComponent::MeshRenderComponent() {}
 
 const std::string& MeshRenderComponent::VGetName() const {
 	return g_Name;
-}
-
-const char* MeshRenderComponent::GetTextureResource() {
-	return m_textureResource.c_str();
 }
 
 const char* MeshRenderComponent::GetPixelShaderResource() {
@@ -32,11 +26,6 @@ const char* MeshRenderComponent::GetVertexShaderResource() {
 }
 
 bool MeshRenderComponent::VDelegateInit(TiXmlElement* pData) {
-
-	TiXmlElement* pTexture = pData->FirstChildElement("Texture");
-	if (pTexture) {
-		m_textureResource = pTexture->FirstChild()->Value();
-	}
 
 	TiXmlElement* pPixelShader = pData->FirstChildElement("PixelShader");
 	if (pPixelShader) {
