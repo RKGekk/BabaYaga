@@ -8,10 +8,12 @@
       <MeshRenderComponent>
         <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
         <Texture>D.bmp</Texture>
-        <Obj>MoonCrate.obj</Obj>
         <PixelShader>BasicNormalMapPixelShader.fx</PixelShader>
         <VertexShader>BasicNormalMapVertexShader.fx</VertexShader>
       </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>MoonCrate.obj</Obj>
+      </MeshComponent>
     </Actor>
   </StaticActors>
 </World>

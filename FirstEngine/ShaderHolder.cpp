@@ -10,18 +10,26 @@ bool ShaderHolder::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceC
 	bool result;
 
 	for (const auto& shaderFilename : shaderFilenames) {
-		result = LoadShader(device, deviceContext, shaderFilename.fileName, shaderFilename.shaderType);
-		if (!result) {
-			return false;
-		}
-
-		// Upload shader data to GPU memory
-		result = m_s_Instance->m_Shaders[shaderFilename.fileName].LoadToGPU(device, deviceContext);
-		if (!result) {
-			return false;
-		}
+		AddShader(device, deviceContext, shaderFilename);
 	}
 
+	return true;
+}
+
+bool ShaderHolder::AddShader(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const ShaderProperty& shaderFilename) {
+	if(m_s_Instance->m_Shaders.count(shaderFilename.fileName)) {
+		return true;
+	}
+	bool result = LoadShader(device, deviceContext, shaderFilename.fileName, shaderFilename.shaderType);
+	if (!result) {
+		return false;
+	}
+
+	// Upload shader data to GPU memory
+	result = m_s_Instance->m_Shaders[shaderFilename.fileName].LoadToGPU(device, deviceContext);
+	if (!result) {
+		return false;
+	}
 	return true;
 }
 
@@ -44,8 +52,6 @@ bool ShaderHolder::LoadShader(ID3D11Device* device, ID3D11DeviceContext* deviceC
 ShaderClass& ShaderHolder::GetShader(std::wstring const& filename) {
 	auto& m = m_s_Instance->m_Shaders;
 	auto keyValuePair = m.find(filename);
-	// auto is equivalent of map<string, Shader>::iterator
-	// Did we find a match?
 	if (keyValuePair != m.end()) {
 		return keyValuePair->second;
 	}

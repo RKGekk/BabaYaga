@@ -23,6 +23,7 @@ public:
 	ShaderClass();
 	ShaderClass(ShaderType st);
 	ShaderClass(ShaderType st, std::string EntryPoint);
+
 	ShaderClass(const ShaderClass&) = delete;
 	ShaderClass& operator=(const ShaderClass&) = delete;
 	~ShaderClass();

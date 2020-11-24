@@ -7,7 +7,6 @@
 
 class MeshRenderComponent : public BaseRenderComponent {
     std::string m_textureResource;
-    std::string m_objResource;
     std::string m_pixelShaderResource;
     std::string m_vertexShaderResource;
 
@@ -17,7 +16,6 @@ public:
 
     MeshRenderComponent();
     const char* GetTextureResource();
-    const char* GetObjResource();
     const char* GetPixelShaderResource();
     const char* GetVertexShaderResource();
 

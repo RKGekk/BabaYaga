@@ -11,7 +11,7 @@ private:
     std::map<std::wstring, ShaderClass> m_Shaders;
     static ShaderHolder* m_s_Instance;
 
-    bool LoadShader(ID3D11Device*, ID3D11DeviceContext*, const std::wstring&, ShaderClass::ShaderType st);
+    static bool LoadShader(ID3D11Device*, ID3D11DeviceContext*, const std::wstring&, ShaderClass::ShaderType st);
 
 public:
 
@@ -26,5 +26,6 @@ public:
 
     bool Initialize(ID3D11Device*, ID3D11DeviceContext*, const std::vector<ShaderProperty>&);
 
+    static bool AddShader(ID3D11Device*, ID3D11DeviceContext*, const ShaderProperty&);
     static ShaderClass& GetShader(std::wstring const& filename);
 };

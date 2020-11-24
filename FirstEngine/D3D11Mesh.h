@@ -40,6 +40,7 @@
 
 #include "BaseRenderComponent.h"
 #include "MeshRenderComponent.h"
+#include "MeshComponent.h"
 
 #include "stringUtility.h"
 

@@ -10,4 +10,7 @@
     <PixelShader>NoPShader</PixelShader>
     <VertexShader>NoVShader</VertexShader>
   </MeshRenderComponent>
+  <MeshComponent>
+    <Obj>NoObj</Obj>
+  </MeshComponent>
 </Actor>

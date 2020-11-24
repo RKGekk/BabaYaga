@@ -1,11 +1,13 @@
 #include "D3D11Mesh.h"
 #include "FreeCameraNode.h"
 #include "SceneTree.h"
+#include "memoryUtility.h"
 
 D3D11Mesh::D3D11Mesh(BaseRenderComponent* renderComponent, DirectX::XMFLOAT4X4* pMatrix, ID3D11Device* device) : D3D11Drawable(renderComponent, pMatrix) {
 	MeshRenderComponent* mrc = static_cast<MeshRenderComponent*>(renderComponent);
+	std::shared_ptr<MeshComponent> mc = MakeStrongPtr(mrc->GetOwner()->GetComponent<MeshComponent>(MeshComponent::g_Name));
 
-	IndexedTriangleList model = IndexedTriangleList::LoadUVNormals(mrc->GetObjResource());
+	MeshComponent::IndexedTriangleList model = mc->GetTriangleList();
 
 	std::unique_ptr<VertexBuffer> vb = std::make_unique<VertexBuffer>(device, model.vertices);
 	AddBind(std::move(vb));

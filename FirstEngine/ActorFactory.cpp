@@ -2,6 +2,7 @@
 
 #include "TransformComponent.h"
 #include "MeshRenderComponent.h"
+#include "MeshComponent.h"
 
 unsigned int ActorFactory::GetNextActorId() {
     return ++m_lastActorId;
@@ -10,8 +11,9 @@ unsigned int ActorFactory::GetNextActorId() {
 ActorFactory::ActorFactory() {
     m_lastActorId = 0;
 
-    m_componentFactory.Register<TransformComponent>(ActorComponent::GetIdFromName(TransformComponent::g_Name));
-    m_componentFactory.Register<MeshRenderComponent>(ActorComponent::GetIdFromName(MeshRenderComponent::g_Name));
+    m_componentFactory.Register<TransformComponent>(ActorComponent::GetIdFromName(TransformComponent::g_Name), TransformComponent::g_Name);
+    m_componentFactory.Register<MeshRenderComponent>(ActorComponent::GetIdFromName(MeshRenderComponent::g_Name), MeshRenderComponent::g_Name);
+    m_componentFactory.Register<MeshComponent>(ActorComponent::GetIdFromName(MeshComponent::g_Name), MeshComponent::g_Name);
 }
 
 std::shared_ptr<Actor> ActorFactory::CreateActor(const char* actorResource, TiXmlElement* overrides, const DirectX::XMFLOAT4X4* pinitialTransform, const ActorId serversActorId) {

@@ -2,6 +2,7 @@
 
 #include "TransformComponent.h"
 #include "memoryUtility.h"
+#include "stringUtility.h"
 #include "Actor.h"
 #include "D3D11Mesh.h"
 #include "SystemClass.h"
@@ -12,7 +13,6 @@ const std::string MeshRenderComponent::g_Name = "MeshRenderComponent";
 
 MeshRenderComponent::MeshRenderComponent() {
 	m_textureResource = "";
-	m_objResource = "";
 }
 
 const std::string& MeshRenderComponent::VGetName() const {
@@ -21,10 +21,6 @@ const std::string& MeshRenderComponent::VGetName() const {
 
 const char* MeshRenderComponent::GetTextureResource() {
 	return m_textureResource.c_str();
-}
-
-const char* MeshRenderComponent::GetObjResource() {
-	return m_objResource.c_str();
 }
 
 const char* MeshRenderComponent::GetPixelShaderResource() {
@@ -42,19 +38,20 @@ bool MeshRenderComponent::VDelegateInit(TiXmlElement* pData) {
 		m_textureResource = pTexture->FirstChild()->Value();
 	}
 
-	TiXmlElement* pObj = pData->FirstChildElement("Obj");
-	if (pObj) {
-		m_objResource = pObj->FirstChild()->Value();
-	}
-
 	TiXmlElement* pPixelShader = pData->FirstChildElement("PixelShader");
 	if (pPixelShader) {
 		m_pixelShaderResource = pPixelShader->FirstChild()->Value();
+	}
+	if(m_pixelShaderResource != "NoPShader") {
+		ShaderHolder::AddShader(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), { s2ws(m_pixelShaderResource), ShaderClass::ShaderType::PixelShader });
 	}
 
 	TiXmlElement* pVertexShader = pData->FirstChildElement("VertexShader");
 	if (pVertexShader) {
 		m_vertexShaderResource = pVertexShader->FirstChild()->Value();
+	}
+	if (m_vertexShaderResource != "NoVShader") {
+		ShaderHolder::AddShader(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), { s2ws(m_vertexShaderResource), ShaderClass::ShaderType::VertexShader });
 	}
 
 	return true;

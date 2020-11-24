@@ -168,6 +168,9 @@ bool MeshComponent::VInit(TiXmlElement* pData) {
 		return false;
 	}
 	m_objResource = fileName;
+	if(fileName == "NoObj") {
+		return true;
+	}
 	std::string err;
 	return LoadObj(&m_attrib, &m_shapes, &m_materials, &err, fileName.c_str());
 }
