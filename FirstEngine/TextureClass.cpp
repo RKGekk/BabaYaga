@@ -1,7 +1,17 @@
 #include "textureclass.h"
 
-TextureClass::TextureClass() {
+#include "SystemClass.h"
 
+TextureClass::TextureClass() {
+	m_canDraw = false;
+	m_loaded = false;
+	m_width = 0;
+	m_height = 0;
+	m_is3Dtexture = false;
+}
+
+TextureClass::TextureClass(bool texture3D) : TextureClass() {
+	m_is3Dtexture = texture3D;
 }
 
 TextureClass::~TextureClass() {}
@@ -19,9 +29,18 @@ bool TextureClass::Initialize(const std::string& filename) {
 	bool result;
 	if (fileExtension == "TGA") {
 		result = LoadTga(filename);
+		m_canDraw = true;
+		m_loaded = false;
 	}
 	else if (fileExtension == "BMP") {
 		result = LoadBmp(filename);
+		m_canDraw = true;
+		m_loaded = false;
+	}
+	else if (fileExtension == "DDS") {
+		result = LoadDds(filename);
+		m_canDraw = false;
+		m_loaded = true;
 	}
 	else {
 		return false;
@@ -40,6 +59,8 @@ bool TextureClass::InitializeBlank(unsigned int width, unsigned int height, Colo
 	m_height = height;
 	m_Data = std::vector<unsigned char>(width * height * 4);
 	Clear(color);
+	m_canDraw = true;
+	m_loaded = false;
 
 	return true;
 }
@@ -78,9 +99,14 @@ bool TextureClass::LoadToGPU(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 	}
 
 	// Create the empty texture.
-	ThrowIfFailed(
-		device->CreateTexture2D(&textureDesc, NULL, m_texture.GetAddressOf())
-	);
+	if(m_is3Dtexture) {
+		throw;
+	}
+	else {
+		ThrowIfFailed(
+			device->CreateTexture2D(&textureDesc, NULL, reinterpret_cast<ID3D11Texture2D**>(m_texture.GetAddressOf()))
+		);
+	}
 	
 
 	// Set the row pitch of the targa image data.
@@ -106,6 +132,8 @@ bool TextureClass::LoadToGPU(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 		// Generate mipmaps for this texture.
 		deviceContext->GenerateMips(m_textureView.Get());
 	}
+
+	m_loaded = true;
 
 	return true;
 }
@@ -229,6 +257,10 @@ unsigned int TextureClass::GetHeight() const {
 	return m_height;
 }
 
+bool TextureClass::IsLoaded() const {
+	return m_loaded;
+}
+
 bool TextureClass::LoadTga(const std::string& filename) {
 
 	unsigned int count;
@@ -343,7 +375,12 @@ bool TextureClass::LoadBmp(const std::string& filename) {
 
 bool TextureClass::LoadDds(const std::string& filename) {
 
-	
-
-	return true;
+	HRESULT hResult;
+	hResult = DirectX::CreateDDSTextureFromFile(SystemClass::GetGraphics().GetD3D()->GetDevice(), SystemClass::GetGraphics().GetD3D()->GetDeviceContext(), s2ws(filename).c_str(), m_texture.GetAddressOf(), m_textureView.GetAddressOf());
+	if (FAILED(hResult)) {
+		return false;
+	}
+	else {
+		return true;
+	}
 }

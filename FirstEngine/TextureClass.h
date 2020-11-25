@@ -26,6 +26,7 @@ private:
 
 public:
 	TextureClass();
+	TextureClass(bool texture3D);
 	TextureClass(const TextureClass&) = delete;
 	TextureClass& operator=(const TextureClass&) = delete;
 	~TextureClass();
@@ -48,6 +49,7 @@ public:
 
 	unsigned int GetWidth() const;
 	unsigned int GetHeight() const;
+	bool IsLoaded() const;
 
 private:
 	bool LoadTga(const std::string&);
@@ -55,8 +57,12 @@ private:
 	bool LoadDds(const std::string&);
 
 	std::vector<unsigned char>							m_Data;
-	Microsoft::WRL::ComPtr<ID3D11Texture2D>				m_texture;
+	Microsoft::WRL::ComPtr<ID3D11Resource>				m_texture;
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView>	m_textureView;
+
+	bool m_canDraw;
+	bool m_loaded;
+	bool m_is3Dtexture;
 
 	unsigned int m_width;
 	unsigned int m_height;

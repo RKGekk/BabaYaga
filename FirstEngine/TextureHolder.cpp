@@ -27,10 +27,12 @@ bool TextureHolder::AddTexture(ID3D11Device* device, ID3D11DeviceContext* device
 	if (!result) {
 		return false;
 	}
-
-	result = m_s_Instance->m_Textures[textureFilename].LoadToGPU(device, deviceContext, D3D11_USAGE_DEFAULT, 0);
-	if (!result) {
-		return false;
+	TextureClass& tx = m_s_Instance->m_Textures[textureFilename];
+	if(!tx.IsLoaded()) {
+		result = tx.LoadToGPU(device, deviceContext, D3D11_USAGE_DEFAULT, 0);
+		if (!result) {
+			return false;
+		}
 	}
 	return true;
 }

@@ -37,7 +37,7 @@ bool GraphicsClass::Initialize(const EngineOptions& options, HWND hwnd) {
 	}
 
 	// Initialize the texture holder object.
-	std::vector<std::string> textures{ "D.bmp" };
+	std::vector<std::string> textures{ "D.bmp", "dirty-wicker-weave1-albedo.dds" };
 	result = m_TextureHolder->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), textures);
 	if (!result) {
 		MessageBox(hwnd, L"Could not initialize the textures.", L"Error", MB_OK);

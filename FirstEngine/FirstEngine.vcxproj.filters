@@ -405,6 +405,9 @@
     <ClInclude Include="MeshComponent.h">
       <Filter>ActorManager</Filter>
     </ClInclude>
+    <ClInclude Include="WICTextureLoader.h">
+      <Filter>Main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -692,6 +695,9 @@
     <ClCompile Include="MeshComponent.cpp">
       <Filter>ActorManager</Filter>
     </ClCompile>
+    <ClCompile Include="WICTextureLoader.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="EngineOptions.xml">
@@ -725,6 +731,9 @@
       <Filter>Resources</Filter>
     </None>
     <None Include="World1.xml">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="dirty-wicker-weave1-albedo.dds">
       <Filter>Resources</Filter>
     </None>
   </ItemGroup>
