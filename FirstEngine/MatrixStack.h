@@ -104,6 +104,10 @@ public:
 	// Note that this method does not remove the current matrix from the top of the stack; rather, it just returns the current matrix.
 	DirectX::XMFLOAT4X4& GetTop();
 
+	// Retrieves the current transposed matrix at the top of the stack.
+	// Note that this method does not remove the current matrix from the top of the stack; rather, it just returns the current matrix.
+	DirectX::XMFLOAT4X4& GetTopT();
+
 	// Rotates (relative to world coordinate space) around an arbitrary axis.
 	// axis - arbitrary axis of rotation
 	// angle - Rotation angle about the arbitrary axis, in radians. Angles are measured counterclockwise when looking along the arbitrary axis toward the origin.

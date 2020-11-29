@@ -53,7 +53,7 @@ HRESULT SceneTree::OnRender(ID3D11DeviceContext* deviceContext) {
 
 		m_Camera->VRender(this, deviceContext);
 
-		if (m_Root->VPreRender(this) == S_OK) {
+		if (m_Root->VPreRender(this, deviceContext) == S_OK) {
 			m_Root->VRender(this, deviceContext);
 			m_Root->VRenderChildren(this, deviceContext);
 			m_Root->VPostRender(this);
@@ -155,19 +155,18 @@ const std::shared_ptr<FreeCameraNode> SceneTree::GetCamera() const {
 }
 
 void SceneTree::PushAndSetMatrix(const DirectX::XMFLOAT4X4& toWorld) {
-
 	m_MatrixStack->Push();
 	m_MatrixStack->MultMatrixLocal(toWorld);
-	DirectX::XMFLOAT4X4 mat = GetTopMatrix();
 }
 
 void SceneTree::PopMatrix() {
-
 	m_MatrixStack->Pop();
-	DirectX::XMFLOAT4X4 mat = GetTopMatrix();
 }
 
 const DirectX::XMFLOAT4X4 SceneTree::GetTopMatrix() {
-
 	return m_MatrixStack->GetTop();
+}
+
+const DirectX::XMFLOAT4X4 SceneTree::GetTopMatrixT() {
+	return m_MatrixStack->GetTopT();
 }

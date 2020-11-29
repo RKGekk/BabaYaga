@@ -16,7 +16,7 @@ public:
 
 	virtual HRESULT VOnUpdate(SceneTree* pScene, float const elapsedMs, ID3D11DeviceContext* deviceContext) = 0;
 
-	virtual HRESULT VPreRender(SceneTree* pScene) = 0;
+	virtual HRESULT VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) = 0;
 	virtual HRESULT VRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) = 0;
 	virtual HRESULT VRenderChildren(SceneTree* pScene, ID3D11DeviceContext* deviceContext) = 0;
 	virtual HRESULT VPostRender(SceneTree* pScene) = 0;

@@ -10,14 +10,16 @@
 class SceneTree;
 class BaseRenderComponent;
 
+using SceneNodeList = std::vector<std::shared_ptr<ISceneNode>>;
+
 class SceneNode : public ISceneNode {
 	friend class SceneTree;
 
 protected:
-	std::vector<std::shared_ptr<ISceneNode>>	m_Children;
-	SceneNode*									m_pParent;
-	SceneNodeProperties							m_Props;
-	BaseRenderComponent*						m_RenderComponent;
+	SceneNodeList			m_Children;
+	SceneNode*				m_pParent;
+	SceneNodeProperties		m_Props;
+	BaseRenderComponent*	m_RenderComponent;
 
 public:
 	SceneNode(BaseRenderComponent* renderComponent, RenderPass renderPass, DirectX::XMFLOAT4X4* to = nullptr, DirectX::XMFLOAT4X4* from = nullptr);
@@ -38,7 +40,7 @@ public:
 
 	virtual HRESULT VOnUpdate(SceneTree*, float const elapsedMs, ID3D11DeviceContext* deviceContext) override;
 
-	virtual HRESULT VPreRender(SceneTree* pScene) override;
+	virtual HRESULT VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;
 	virtual HRESULT VRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;
 	virtual HRESULT VRenderChildren(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;
 	virtual HRESULT VPostRender(SceneTree* pScene) override;

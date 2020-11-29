@@ -51,5 +51,6 @@ public:
 	void PushAndSetMatrix(const DirectX::XMFLOAT4X4& toWorld);
 	void PopMatrix();
 
-	const DirectX::XMFLOAT4X4 GetTopMatrix();	
+	const DirectX::XMFLOAT4X4 GetTopMatrix();
+	const DirectX::XMFLOAT4X4 GetTopMatrixT();
 };

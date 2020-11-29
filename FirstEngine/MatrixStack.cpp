@@ -88,6 +88,13 @@ DirectX::XMFLOAT4X4& MatrixStack::GetTop() {
 	return m_MatrixStack.back();
 }
 
+DirectX::XMFLOAT4X4& MatrixStack::GetTopT() {
+	DirectX::XMMATRIX t = DirectX::XMMatrixTranspose(DirectX::XMLoadFloat4x4(&GetTop()));
+	DirectX::XMFLOAT4X4 t4x4;
+	DirectX::XMStoreFloat4x4(&t4x4, t);
+	return t4x4;
+}
+
 // Rotates (relative to world coordinate space) around an arbitrary axis.
 // axis - arbitrary axis of rotation
 // angle - Rotation angle about the arbitrary axis, in radians. Angles are measured counterclockwise when looking along the arbitrary axis toward the origin.

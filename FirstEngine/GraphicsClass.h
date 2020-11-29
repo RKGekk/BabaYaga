@@ -59,7 +59,9 @@ private:
 
 	std::unique_ptr<Scene1>						m_Scene1;
 	std::unique_ptr<Scene3>						m_Scene3;
-	float factor = 0.0f;
+	float factorX = 0.0f;
+	float factorY = 0.0f;
+	float factorZ = 0.0f;
 	//int											m_sceneNumber;
 
 	int											mClientWidth;

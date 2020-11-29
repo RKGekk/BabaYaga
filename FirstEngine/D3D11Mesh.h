@@ -56,4 +56,5 @@ public:
 	D3D11Mesh(BaseRenderComponent* renderComponent, DirectX::XMFLOAT4X4* pMatrix, ID3D11Device* device);
 	virtual ~D3D11Mesh();
 	virtual HRESULT VOnUpdate(SceneTree* pScene, float const elapsedMs, ID3D11DeviceContext* deviceContext);
+	virtual HRESULT VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;
 };

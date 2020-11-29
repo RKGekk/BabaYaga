@@ -58,7 +58,6 @@ const DirectX::XMFLOAT3 SceneNode::GetWorldPosition() const {
 }
 
 DirectX::XMFLOAT3 SceneNode::GetPosition() const {
-
 	return DirectX::XMFLOAT3(m_Props.m_ToWorld.m[3][0], m_Props.m_ToWorld.m[3][1], m_Props.m_ToWorld.m[3][2]);
 }
 
@@ -110,7 +109,7 @@ void SceneNode::VSetTransform(DirectX::XMFLOAT4X4* toWorld, DirectX::XMFLOAT4X4*
 	}
 }
 
-HRESULT SceneNode::VPreRender(SceneTree* pScene) {
+HRESULT SceneNode::VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) {
 	// This was added post press! Is is always ok to read directly from the game logic.
 	std::shared_ptr<Actor> pActor = pScene->FindActor(m_Props.m_ActorId);
 	if (pActor) {
@@ -135,7 +134,7 @@ HRESULT SceneNode::VRenderChildren(SceneTree* pScene, ID3D11DeviceContext* devic
 	auto end = m_Children.end();
 
 	while (i != end) {
-		if ((*i)->VPreRender(pScene) == S_OK) {
+		if ((*i)->VPreRender(pScene, deviceContext) == S_OK) {
 			// You could short-circuit rendering
 			// if an object returns E_FAIL from
 			// VPreRender()

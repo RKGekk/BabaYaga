@@ -150,11 +150,24 @@ bool GraphicsClass::Render() {
 	// imgui window to control simulation speed
 	if (ImGui::Begin("Simulation Speed")) {
 
-		if(ImGui::SliderFloat("Test slide", &factor, 0.0f, 4.0f)) {
+		if(ImGui::SliderFloat("Move actor Y slide", &factorY, -8.0f, 8.0f)) {
 			DirectX::XMFLOAT4X4 m_testMatrix;
-			DirectX::XMStoreFloat4x4(&m_testMatrix, DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(0.0f, factor, 0.0f)));
-			std::shared_ptr<EvtData_Move_Actor> pNewActorEvent(new EvtData_Move_Actor(1, m_testMatrix));
-			IEventManager::Get()->VQueueEvent(pNewActorEvent);
+			DirectX::XMStoreFloat4x4(&m_testMatrix, DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ)));
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(1, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+		if (ImGui::SliderFloat("Move actor X slide", &factorX, -8.0f, 8.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(&m_testMatrix, DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ)));
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(1, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (ImGui::SliderFloat("Move actor Z slide", &factorZ, -8.0f, 8.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(&m_testMatrix, DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ)));
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(1, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
 		}
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	}

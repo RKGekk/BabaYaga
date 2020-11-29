@@ -79,10 +79,16 @@ D3D11Mesh::~D3D11Mesh() {}
 
 HRESULT D3D11Mesh::VOnUpdate(SceneTree* pScene, float const elapsedMs, ID3D11DeviceContext* deviceContext) {
 
+	return S_OK;
+}
+
+HRESULT D3D11Mesh::VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) {
+	SceneNode::VPreRender(pScene, deviceContext);
+
 	const std::shared_ptr<FreeCameraNode> camera = pScene->GetCamera();
 
 	cbPerObject mt;
-	mt.worldMatrix = pScene->GetTopMatrix();
+	mt.worldMatrix = pScene->GetTopMatrixT();
 	mt.viewMatrix = camera->GetViewMatrix4x4T();
 	mt.projectionMatrix = camera->GetProjectionMatix4x4T();
 	// Inverse-transpose is just applied to normals.  So zero out 
