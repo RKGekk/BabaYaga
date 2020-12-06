@@ -408,6 +408,18 @@
     <ClInclude Include="WICTextureLoader.h">
       <Filter>Main</Filter>
     </ClInclude>
+    <ClInclude Include="LightRenderComponent.h">
+      <Filter>ActorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DLightNode11.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="LightType.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -698,6 +710,15 @@
     <ClCompile Include="WICTextureLoader.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="LightRenderComponent.cpp">
+      <Filter>ActorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DLightNode11.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="EngineOptions.xml">
@@ -734,6 +755,24 @@
       <Filter>Resources</Filter>
     </None>
     <None Include="dirty-wicker-weave1-albedo.dds">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="box1.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="box1.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="stone01.tga">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="man1.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="man1.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="LightRenderComponent.xml">
       <Filter>Resources</Filter>
     </None>
   </ItemGroup>

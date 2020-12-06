@@ -14,13 +14,14 @@ class ISceneNode;
 class IEventData;
 class Actor;
 class CameraNode;
-class IRenderer;
 class FreeCameraNode;
+class LightManager;
 
 class SceneTree {
 protected:
 	std::shared_ptr<SceneNode>							m_Root;
 	std::shared_ptr<FreeCameraNode>					 	m_Camera;
+	LightManager*										m_LightManager;
 
 	std::shared_ptr<MatrixStack>						m_MatrixStack;
 	std::map<unsigned int, std::shared_ptr<ISceneNode>>	m_ActorMap;

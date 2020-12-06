@@ -36,7 +36,6 @@ SceneTree::~SceneTree() {
 	pEventMgr->VRemoveListener(fastdelegate::MakeDelegate(this, &SceneTree::NewRenderComponentDelegate), EvtData_New_Render_Component::sk_EventType);
 	pEventMgr->VRemoveListener(fastdelegate::MakeDelegate(this, &SceneTree::DestroyActorDelegate), EvtData_Destroy_Actor::sk_EventType);
 	pEventMgr->VRemoveListener(fastdelegate::MakeDelegate(this, &SceneTree::MoveActorDelegate), EvtData_Move_Actor::sk_EventType);
-
 	pEventMgr->VRemoveListener(fastdelegate::MakeDelegate(this, &SceneTree::ModifiedRenderComponentDelegate), EvtData_Modified_Render_Component::sk_EventType);
 }
 

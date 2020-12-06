@@ -1,5 +1,6 @@
 <World>
   <StaticActors>
+    
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
         <Position x="0.000000" y="0.000000" z="0.000000" />
@@ -14,5 +15,43 @@
         <Obj>MoonCrate.obj</Obj>
       </MeshComponent>
     </Actor>
+    
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="0.000000" y="2.000000" z="4.000000" />
+        <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>box1.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
+    <!--<Actor type="LightRenderComponent" resource="LightRenderComponent.xml">
+
+      <TransformComponent>
+        <Position x="0.0" y="0.0" z="-1.0"/>
+        --><!-- angleType rad, deg --><!--
+        <YawPitchRoll angleType="deg" x="0" y="0" z="0"/>
+        <Direction x="0.0" y="0.0" z="1.0"/>
+      </TransformComponent>
+
+      <LightRenderComponent type="DirectionalLight">
+        <Color r="0.9" g="0.9" b="0.9" a="1.0"/>
+        <Light>
+          <Ambient r="0.9" g="0.9" b="0.9" a="1.0" />
+          <Diffuse r="0.9" g="0.9" b="0.9" a="1.0" />
+          <Specular r="0.9" g="0.9" b="0.9" a="1.0" />
+          <Attenuation const="0.1" linear="0.0" exp="0.0" />
+          <Shape range="100.0" spot="24.0"/>
+        </Light>
+      </LightRenderComponent>
+
+    </Actor>-->
+    
   </StaticActors>
 </World>

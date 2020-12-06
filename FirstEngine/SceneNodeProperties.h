@@ -3,6 +3,7 @@
 #include <string>
 #include <DirectXMath.h>
 #include "RenderPass.h"
+#include "Material.h"
 
 class SceneNodeProperties {
 	friend class SceneNode;
@@ -14,6 +15,7 @@ protected:
 	DirectX::XMFLOAT4X4	m_FromWorld;
 	float				m_Radius;
 	RenderPass			m_RenderPass;
+	Material			m_Material;
 
 	void SetAlpha(const float alpha) {}
 
@@ -28,4 +30,7 @@ public:
 
 	RenderPass RenderPass() const;
 	float Radius() const;
+
+	Material GetMaterial() const;
+	void SetMaterial(Material mt);
 };

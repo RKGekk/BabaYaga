@@ -39,3 +39,11 @@ RenderPass SceneNodeProperties::RenderPass() const {
 float SceneNodeProperties::Radius() const {
 	return m_Radius;
 }
+
+Material SceneNodeProperties::GetMaterial() const {
+	return m_Material;
+}
+
+void SceneNodeProperties::SetMaterial(Material mt) {
+	m_Material = mt;
+}

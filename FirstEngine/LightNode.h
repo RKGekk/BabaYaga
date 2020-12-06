@@ -2,6 +2,7 @@
 
 #include <DirectXMath.h>
 
+
 #include "SceneNode.h"
 #include "LightProperties.h"
 
@@ -10,5 +11,7 @@ protected:
 	LightProperties m_LightProps;
 
 public:
-	LightNode(const unsigned int actorId, BaseRenderComponent* renderComponent, const LightProperties& props, DirectX::XMFLOAT4X4* t);
+	LightNode(BaseRenderComponent* renderComponent, const LightProperties& props, const DirectX::XMFLOAT4X4* t);
+
+	virtual const LightProperties* const VGetLight() const;
 };

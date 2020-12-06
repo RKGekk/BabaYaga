@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor type="LightRenderComponent" resource="LightRenderComponent.xml">
+
+  <TransformComponent>
+    <Position x="0.0" y="0.0" z="-1.0"/>
+    <!-- angleType rad, deg -->
+    <YawPitchRoll angleType="deg" x="0" y="0" z="0"/>
+    <Direction x="0.0" y="0.0" z="1.0"/>
+  </TransformComponent>
+
+  <!-- DirectionalLight, PointLight, SpotLight -->
+  <LightRenderComponent type="PointLight">
+    <Color r="0.9" g="0.9" b="0.9" a="1.0"/>
+    <Light>
+      <Ambient r="0.9" g="0.9" b="0.9" a="1.0" />
+      <Diffuse r="0.9" g="0.9" b="0.9" a="1.0" />
+      <Specular r="0.9" g="0.9" b="0.9" a="1.0" />
+      <Attenuation const="0.1" linear="0.0" exp="0.0" />
+      <Shape range="100.0" spot="0.0"/>
+    </Light>
+  </LightRenderComponent>
+
+</Actor>

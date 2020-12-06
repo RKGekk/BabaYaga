@@ -9,7 +9,7 @@
 #include <DirectXMath.h>
 #include <DirectXCollision.h>
 
-SceneNode::SceneNode(BaseRenderComponent* renderComponent, RenderPass renderPass, DirectX::XMFLOAT4X4* to, DirectX::XMFLOAT4X4* from) {
+SceneNode::SceneNode(BaseRenderComponent* renderComponent, RenderPass renderPass, const DirectX::XMFLOAT4X4* to, const DirectX::XMFLOAT4X4* from) {
 
 	DirectX::XMFLOAT4X4 to4x4;
 	if (to == nullptr) {
@@ -97,7 +97,7 @@ HRESULT SceneNode::VOnUpdate(SceneTree* pScene, float const elapsedMs, ID3D11Dev
 	return S_OK;
 }
 
-void SceneNode::VSetTransform(DirectX::XMFLOAT4X4* toWorld, DirectX::XMFLOAT4X4* fromWorld) {
+void SceneNode::VSetTransform(const DirectX::XMFLOAT4X4* toWorld, const DirectX::XMFLOAT4X4* fromWorld) {
 	m_Props.m_ToWorld = *toWorld;
 	if (!fromWorld) {
 		DirectX::XMMATRIX toWorldMatrix = DirectX::XMLoadFloat4x4(&m_Props.m_ToWorld);

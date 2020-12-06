@@ -22,7 +22,7 @@ protected:
 	BaseRenderComponent*	m_RenderComponent;
 
 public:
-	SceneNode(BaseRenderComponent* renderComponent, RenderPass renderPass, DirectX::XMFLOAT4X4* to = nullptr, DirectX::XMFLOAT4X4* from = nullptr);
+	SceneNode(BaseRenderComponent* renderComponent, RenderPass renderPass, const DirectX::XMFLOAT4X4* to = nullptr, const DirectX::XMFLOAT4X4* from = nullptr);
 
 	virtual const SceneNodeProperties* const VGet() const;
 
@@ -36,9 +36,9 @@ public:
 
 
 	// ***** Implementation pure virtual functions *****
-	virtual void VSetTransform(DirectX::XMFLOAT4X4* toWorld, DirectX::XMFLOAT4X4* fromWorld = NULL) override;
+	virtual void VSetTransform(const DirectX::XMFLOAT4X4* toWorld, const DirectX::XMFLOAT4X4* fromWorld = NULL) override;
 
-	virtual HRESULT VOnUpdate(SceneTree*, float const elapsedMs, ID3D11DeviceContext* deviceContext) override;
+	virtual HRESULT VOnUpdate(SceneTree*, float elapsedMs, ID3D11DeviceContext* deviceContext) override;
 
 	virtual HRESULT VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;
 	virtual HRESULT VRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;

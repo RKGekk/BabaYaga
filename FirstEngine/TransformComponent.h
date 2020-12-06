@@ -9,6 +9,7 @@ class TransformComponent : public ActorComponent {
 
 private:
     DirectX::XMFLOAT4X4 m_transform;
+    DirectX::XMFLOAT4 m_direction;
 
 public:
     static const std::string g_Name;
@@ -37,4 +38,8 @@ public:
 
     DirectX::XMFLOAT3 GetYawPitchRoll3f() const;
     DirectX::XMVECTOR GetYawPitchRoll() const;
+
+    DirectX::XMFLOAT3 GetDirection3f() const;
+    DirectX::XMFLOAT4 GetDirection4f() const;
+    DirectX::XMVECTOR GetDirection() const;
 };

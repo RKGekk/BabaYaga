@@ -4,6 +4,8 @@
 const std::string TransformComponent::g_Name = "TransformComponent";
 
 TransformComponent::TransformComponent() {
+
+    m_direction = DirectX::XMFLOAT4(0.0f, 0.0f, 1.0f, 0.0f);
     DirectX::XMStoreFloat4x4(&m_transform, DirectX::XMMatrixIdentity());
 }
 
@@ -79,6 +81,19 @@ DirectX::XMVECTOR TransformComponent::GetLookAt() const {
     return out;
 }
 
+DirectX::XMFLOAT3 TransformComponent::GetDirection3f() const {
+    return DirectX::XMFLOAT3(m_direction.x, m_direction.y, m_direction.z);
+}
+
+DirectX::XMFLOAT4 TransformComponent::GetDirection4f() const {
+    return m_direction;
+}
+
+DirectX::XMVECTOR TransformComponent::GetDirection() const {
+    DirectX::XMVECTOR directionXM = DirectX::XMLoadFloat4(&m_direction);
+    return directionXM;
+}
+
 DirectX::XMFLOAT3 TransformComponent::GetYawPitchRoll3f() const {
 
     float pitch = DirectX::XMScalarASin(-m_transform._32);
@@ -132,16 +147,41 @@ bool TransformComponent::VInit(TiXmlElement* pData) {
         pOrientationElement->Attribute("x", &yaw);
         pOrientationElement->Attribute("y", &pitch);
         pOrientationElement->Attribute("z", &roll);
-        yawPitchRoll = DirectX::XMFLOAT3(DirectX::XMConvertToRadians(yaw), DirectX::XMConvertToRadians(pitch), DirectX::XMConvertToRadians(roll));
+        const char* at = pOrientationElement->Attribute("angleType");
+        std::string angleType(at == nullptr? "" : at);
+        if(angleType == "rad") {
+            yawPitchRoll = DirectX::XMFLOAT3(yaw, pitch, roll);
+        }
+        else {
+            yawPitchRoll = DirectX::XMFLOAT3(DirectX::XMConvertToRadians(yaw), DirectX::XMConvertToRadians(pitch), DirectX::XMConvertToRadians(roll));
+        }
     }
     else {
         yawPitchRoll = GetYawPitchRoll3f();
     }
 
-    DirectX::XMMATRIX translation = DirectX::XMMatrixTranslation(position.x, position.y, position.z);
-    DirectX::XMMATRIX rotation = DirectX::XMMatrixRotationRollPitchYaw(yawPitchRoll.y, yawPitchRoll.x, yawPitchRoll.z);
+    DirectX::XMFLOAT4 direction;
+    TiXmlElement* pDirectionElement = pData->FirstChildElement("Direction");
+    if (pDirectionElement) {
+        double x = 0.0;
+        double y = 0.0;
+        double z = 0.0;
+        pDirectionElement->Attribute("x", &x);
+        pDirectionElement->Attribute("y", &y);
+        pDirectionElement->Attribute("z", &z);
+        direction = DirectX::XMFLOAT4(x, y, z, 0.0f);
+    }
+    else {
+        direction = DirectX::XMFLOAT4(0.0f, 0.0f, 1.0f, 0.0f);
+    }
 
-    DirectX::XMStoreFloat4x4(&m_transform, DirectX::XMMatrixMultiply(rotation, translation));
+    DirectX::XMMATRIX translationXM = DirectX::XMMatrixTranslation(position.x, position.y, position.z);
+    DirectX::XMMATRIX rotationXM = DirectX::XMMatrixRotationRollPitchYaw(yawPitchRoll.y, yawPitchRoll.x, yawPitchRoll.z);
+    //DirectX::XMVECTOR directionXM = DirectX::XMLoadFloat4(&direction);
+
+    //DirectX::XMStoreFloat4(&m_direction, DirectX::XMVector4Transform(DirectX::XMVector4Normalize(directionXM), rotationXM));
+    m_direction = direction;
+    DirectX::XMStoreFloat4x4(&m_transform, DirectX::XMMatrixMultiply(rotationXM, translationXM));
 
     return true;
 }

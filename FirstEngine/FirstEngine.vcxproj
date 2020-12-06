@@ -163,6 +163,7 @@
     <ClInclude Include="CountProcess.h" />
     <ClInclude Include="D3D11Drawable.h" />
     <ClInclude Include="D3D11Mesh.h" />
+    <ClInclude Include="D3DLightNode11.h" />
     <ClInclude Include="DDSTextureLoader.h" />
     <ClInclude Include="DepthStencilState.h" />
     <ClInclude Include="DirectionalLight.h" />
@@ -192,8 +193,11 @@
     <ClInclude Include="InputLayout.h" />
     <ClInclude Include="IRenderState.h" />
     <ClInclude Include="ISceneNode.h" />
+    <ClInclude Include="LightManager.h" />
     <ClInclude Include="LightNode.h" />
     <ClInclude Include="LightProperties.h" />
+    <ClInclude Include="LightRenderComponent.h" />
+    <ClInclude Include="LightType.h" />
     <ClInclude Include="MatrixStack.h" />
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="MeshRenderComponent.h" />
@@ -282,6 +286,7 @@
     <ClCompile Include="D3D11Drawable.cpp" />
     <ClCompile Include="D3D11Mesh.cpp" />
     <ClCompile Include="D3DClass.cpp" />
+    <ClCompile Include="D3DLightNode11.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="deflate.c" />
     <ClCompile Include="DepthStencilState.cpp" />
@@ -321,7 +326,9 @@
     <ClCompile Include="inftrees.c" />
     <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="InputLayout.cpp" />
+    <ClCompile Include="LightManager.cpp" />
     <ClCompile Include="LightNode.cpp" />
+    <ClCompile Include="LightRenderComponent.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MatrixStack.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
@@ -365,6 +372,15 @@
     <ClCompile Include="zutil.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="box1.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="box1.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="man1.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MoonCrate.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -399,6 +415,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MeshRenderComponent.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="stone01.tga">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LightRenderComponent.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="man1.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

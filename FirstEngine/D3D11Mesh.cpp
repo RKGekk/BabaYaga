@@ -62,10 +62,10 @@ D3D11Mesh::D3D11Mesh(BaseRenderComponent* renderComponent, DirectX::XMFLOAT4X4* 
 
 	cbPerFrame lt;
 	DirectionalLight dl;
-	dl.Ambient = DirectX::XMFLOAT4(0.1f, 0.1f, 0.1f, 1.0f);
+	dl.Ambient = DirectX::XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
 	dl.Diffuse = DirectX::XMFLOAT4(0.9f, 0.9f, 0.9f, 1.0f);
 	dl.Specular = DirectX::XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
-	dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 0.0f);
+	dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 1.0f);
 	dl.Pad = 1.0f;
 	lt.dirLight = dl;
 	lt.eyePos = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
@@ -102,11 +102,11 @@ HRESULT D3D11Mesh::VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceCont
 
 	cbPerFrame lt;
 	DirectionalLight dl;
-	dl.Ambient = DirectX::XMFLOAT4(0.1f, 0.1f, 0.1f, 1.0f);
+	dl.Ambient = DirectX::XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
 	dl.Diffuse = DirectX::XMFLOAT4(0.9f, 0.9f, 0.9f, 1.0f);
 	dl.Specular = DirectX::XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
 
-	dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 0.0f);
+	dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 1.0f);
 	lt.dirLight = dl;
 	lt.eyePos = camera->GetPosition3f();
 	m_cbps1->Update(deviceContext, lt);
