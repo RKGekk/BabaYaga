@@ -775,5 +775,17 @@
     <None Include="LightRenderComponent.xml">
       <Filter>Resources</Filter>
     </None>
+    <None Include="black.bmp">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="Earth.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="2k_earth_daymap.bmp">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="Earth.obj">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>

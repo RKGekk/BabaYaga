@@ -150,25 +150,58 @@ bool GraphicsClass::Render() {
 	// imgui window to control simulation speed
 	if (ImGui::Begin("Simulation Speed")) {
 
+		ImGui::InputInt("Actor ID", &actId);
 		if(ImGui::SliderFloat("Move actor Y slide", &factorY, -8.0f, 8.0f)) {
 			DirectX::XMFLOAT4X4 m_testMatrix;
-			DirectX::XMStoreFloat4x4(&m_testMatrix, DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ)));
-			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(1, m_testMatrix));
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorRoll), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorPitch)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
 			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
 		}
 		if (ImGui::SliderFloat("Move actor X slide", &factorX, -8.0f, 8.0f)) {
 			DirectX::XMFLOAT4X4 m_testMatrix;
-			DirectX::XMStoreFloat4x4(&m_testMatrix, DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ)));
-			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(1, m_testMatrix));
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorRoll), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorPitch)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
 			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
 		}
 
 		if (ImGui::SliderFloat("Move actor Z slide", &factorZ, -8.0f, 8.0f)) {
 			DirectX::XMFLOAT4X4 m_testMatrix;
-			DirectX::XMStoreFloat4x4(&m_testMatrix, DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ)));
-			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(1, m_testMatrix));
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorRoll), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorPitch)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
 			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
 		}
+
+		if (ImGui::SliderFloat("Move actor yaw slide", &factorYaw, -180.0f, 180.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorRoll), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorPitch)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	}
 	ImGui::End();

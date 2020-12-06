@@ -1,6 +1,21 @@
 <World>
   <StaticActors>
-    
+
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="0.000000" y="-1.000000" z="4.000000" />
+        <YawPitchRoll x="-180.000000" y="0.000000" z="0.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>man1.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
         <Position x="0.000000" y="0.000000" z="0.000000" />
@@ -15,8 +30,23 @@
         <Obj>MoonCrate.obj</Obj>
       </MeshComponent>
     </Actor>
-    
+
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="0.000000" y="10.000000" z="34.000000" />
+        <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>Earth.obj</Obj>
+      </MeshComponent>
+    </Actor>
+    
+    <!--<Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
         <Position x="0.000000" y="2.000000" z="4.000000" />
         <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
@@ -29,7 +59,7 @@
       <MeshComponent>
         <Obj>box1.obj</Obj>
       </MeshComponent>
-    </Actor>
+    </Actor>-->
 
     <!--<Actor type="LightRenderComponent" resource="LightRenderComponent.xml">
 
