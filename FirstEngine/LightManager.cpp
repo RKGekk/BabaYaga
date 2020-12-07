@@ -13,14 +13,28 @@ void LightManager::CalcLighting(SceneTree* pScene) {
 }
 
 void LightManager::CalcLighting(cbPerFrame* pLighting, SceneNode* pNode) {
-	DirectionalLight dl;
-	dl.Ambient = DirectX::XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
-	dl.Diffuse = DirectX::XMFLOAT4(0.9f, 0.9f, 0.9f, 1.0f);
-	dl.Specular = DirectX::XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
-	dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 0.0f);
-	dl.Pad = 1.0f;
-	pLighting->dirLight = dl;
-	pLighting->eyePos = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+	if(m_Lights.empty()) {
+		DirectionalLight dl;
+		dl.Ambient = DirectX::XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
+		dl.Diffuse = DirectX::XMFLOAT4(0.9f, 0.9f, 0.9f, 1.0f);
+		dl.Specular = DirectX::XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
+		dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 0.0f);
+		dl.Pad = 1.0f;
+		pLighting->dirLight = dl;
+		pLighting->eyePos = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+	}
+	else {
+		const std::shared_ptr<LightNode> lightNode = m_Lights.front();
+		const LightProperties* light = lightNode->VGetLight();
+		DirectionalLight dl;
+		dl.Ambient = light->m_Ambient;
+		dl.Diffuse = light->m_Diffuse;
+		dl.Specular = light->m_Specular;
+		dl.Direction = lightNode->GetDirection();
+		dl.Pad = 1.0f;
+		pLighting->dirLight = dl;
+		pLighting->eyePos = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+	}
 }
 
 int LightManager::GetLightCount(const SceneNode* node) {

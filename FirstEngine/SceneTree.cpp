@@ -102,7 +102,7 @@ bool SceneTree::AddChild(unsigned int actorId, std::shared_ptr<ISceneNode> kid) 
 	}
 
 	shared_ptr<LightNode> pLight = dynamic_pointer_cast<LightNode>(kid);
-	if (pLight != NULL && m_LightManager->m_Lights.size() + 1 < MAXIMUM_LIGHTS_SUPPORTED) {
+	if (pLight != NULL && m_LightManager->m_Lights.size() + 1 <= MAXIMUM_LIGHTS_SUPPORTED) {
 		m_LightManager->m_Lights.push_back(pLight);
 	}
 
