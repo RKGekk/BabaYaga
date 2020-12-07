@@ -14,6 +14,22 @@ const std::string LightRenderComponent::g_Name = "LightRenderComponent";
 
 LightRenderComponent::LightRenderComponent() {}
 
+LightProperties LightRenderComponent::GetLight() const {
+	return m_Props;
+}
+
+void LightRenderComponent::SetAmbient4f(const DirectX::XMFLOAT4& color) {
+	m_Props.m_Ambient = color;
+}
+
+void LightRenderComponent::SetDiffuse4f(const DirectX::XMFLOAT4& color) {
+	m_Props.m_Diffuse = color;
+}
+
+void LightRenderComponent::SetSpecular4f(const DirectX::XMFLOAT4& color) {
+	m_Props.m_Specular = color;
+}
+
 const std::string& LightRenderComponent::VGetName() const {
 	return g_Name;
 }

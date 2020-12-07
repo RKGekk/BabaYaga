@@ -97,6 +97,19 @@ HRESULT SceneNode::VOnUpdate(SceneTree* pScene, float const elapsedMs, ID3D11Dev
 	return S_OK;
 }
 
+HRESULT SceneNode::VOnRestore(SceneTree* pScene) {
+	DirectX::XMFLOAT4 color = (m_RenderComponent) ? m_RenderComponent->GetColor() : DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Props.m_Material.Diffuse = color;
+
+	SceneNodeList::iterator i = m_Children.begin();
+	SceneNodeList::iterator end = m_Children.end();
+	while (i != end) {
+		(*i)->VOnRestore(pScene);
+		++i;
+	}
+	return S_OK;
+}
+
 void SceneNode::VSetTransform(const DirectX::XMFLOAT4X4* toWorld, const DirectX::XMFLOAT4X4* fromWorld) {
 	m_Props.m_ToWorld = *toWorld;
 	if (!fromWorld) {

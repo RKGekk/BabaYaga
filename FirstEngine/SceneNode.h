@@ -39,6 +39,7 @@ public:
 	virtual void VSetTransform(const DirectX::XMFLOAT4X4* toWorld, const DirectX::XMFLOAT4X4* fromWorld = NULL) override;
 
 	virtual HRESULT VOnUpdate(SceneTree*, float elapsedMs, ID3D11DeviceContext* deviceContext) override;
+	virtual HRESULT VOnRestore(SceneTree* pScene) override;
 
 	virtual HRESULT VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;
 	virtual HRESULT VRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;

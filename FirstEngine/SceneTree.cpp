@@ -137,7 +137,14 @@ void SceneTree::ModifiedRenderComponentDelegate(std::shared_ptr<IEventData> pEve
 		return;
 	}
 
+	if (SystemClass::GetEngineLogic()->GetEngineState() == BaseEngineState::BGS_LoadingGameEnvironment) {
+		return;
+	}
+
 	std::shared_ptr<ISceneNode> pSceneNode = FindSceneNode(actorId);
+	if (pSceneNode) {
+		pSceneNode->VOnRestore(this);
+	}
 }
 
 void SceneTree::DestroyActorDelegate(std::shared_ptr<IEventData> pEventData) {

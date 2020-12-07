@@ -15,6 +15,7 @@ public:
 	virtual void VSetTransform(const DirectX::XMFLOAT4X4* toWorld, const  DirectX::XMFLOAT4X4* fromWorld = NULL) = 0;
 
 	virtual HRESULT VOnUpdate(SceneTree* pScene, float elapsedMs, ID3D11DeviceContext* deviceContext) = 0;
+	virtual HRESULT VOnRestore(SceneTree* pScene) = 0;
 
 	virtual HRESULT VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) = 0;
 	virtual HRESULT VRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) = 0;

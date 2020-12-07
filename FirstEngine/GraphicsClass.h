@@ -59,13 +59,16 @@ private:
 
 	std::unique_ptr<Scene1>						m_Scene1;
 	std::unique_ptr<Scene3>						m_Scene3;
-	int actId = 1;
+	int actId = 0;
 	float factorX = 0.0f;
 	float factorY = 0.0f;
 	float factorZ = 0.0f;
 	float factorYaw = 0.0f;
 	float factorPitch = 0.0f;
 	float factorRoll = 0.0f;
+	float col2Ambient[4];
+	float col2Diffuse[4];
+	float col2Specular[4];
 	//int											m_sceneNumber;
 
 	int											mClientWidth;

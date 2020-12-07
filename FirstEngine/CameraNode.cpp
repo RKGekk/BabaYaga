@@ -43,6 +43,11 @@ HRESULT CameraNode::VRender(SceneTree* pScene, ID3D11DeviceContext* deviceContex
 	return S_OK;
 }
 
+HRESULT CameraNode::VOnRestore(SceneTree* pScene) {
+
+	return S_OK;
+}
+
 HRESULT CameraNode::SetViewTransform(SceneTree* pScene) {
 	//If there is a target, make sure the camera is
 	//rigidly attached right behind the target

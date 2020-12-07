@@ -9,4 +9,5 @@ public:
 	D3DLightNode11(BaseRenderComponent* renderComponent, const LightProperties& props, const DirectX::XMFLOAT4X4* t);
 
 	virtual HRESULT VOnUpdate(SceneTree*, float elapsedMs, ID3D11DeviceContext* deviceContext) override;
+	virtual HRESULT VOnRestore() { return S_OK; };
 };

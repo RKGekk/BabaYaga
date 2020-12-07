@@ -1,6 +1,9 @@
 #include "GraphicsClass.h"
 
 #include "memoryUtility.h"
+#include "SystemClass.h"
+#include "LightRenderComponent.h"
+#include "EvtData_Modified_Render_Component.h"
 
 GraphicsClass::GraphicsClass(const EngineOptions& options) {
 	m_Direct3D		= nullptr;
@@ -147,11 +150,44 @@ bool GraphicsClass::Render() {
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
+	//ImGui::ShowDemoWindow();
+
 	// imgui window to control simulation speed
 	if (ImGui::Begin("Simulation Speed")) {
 
-		ImGui::InputInt("Actor ID", &actId);
-		if(ImGui::SliderFloat("Move actor Y slide", &factorY, -8.0f, 8.0f)) {
+		std::shared_ptr<Actor> act = MakeStrongPtr(SystemClass::GetEngineLogic()->VGetActor(actId));
+		if(ImGui::InputInt("Actor ID", &actId)) {
+			act = MakeStrongPtr(SystemClass::GetEngineLogic()->VGetActor(actId));
+			if(act) {
+				unsigned int componentId = ActorComponent::GetIdFromName("TransformComponent");
+				std::shared_ptr<TransformComponent> rc = MakeStrongPtr(act->GetComponent<TransformComponent>(componentId));
+				factorX = rc->GetPosition3f().x;
+				factorY = rc->GetPosition3f().y;
+				factorZ = rc->GetPosition3f().z;
+				factorYaw = DirectX::XMConvertToDegrees(rc->GetYawPitchRoll3f().x);
+				factorPitch = DirectX::XMConvertToDegrees(rc->GetYawPitchRoll3f().y);
+				factorRoll = DirectX::XMConvertToDegrees(rc->GetYawPitchRoll3f().z);
+				unsigned int lightComponentId = ActorComponent::GetIdFromName("LightRenderComponent");
+				std::shared_ptr<LightRenderComponent> lc = MakeStrongPtr(act->GetComponent<LightRenderComponent>(lightComponentId));
+				if(lc) {
+					LightProperties lp = lc->GetLight();
+					col2Ambient[0] = lp.m_Ambient.x;
+					col2Ambient[1] = lp.m_Ambient.y;
+					col2Ambient[2] = lp.m_Ambient.z;
+					col2Ambient[3] = lp.m_Ambient.w;
+					col2Diffuse[0] = lp.m_Diffuse.x;
+					col2Diffuse[1] = lp.m_Diffuse.y;
+					col2Diffuse[2] = lp.m_Diffuse.z;
+					col2Diffuse[3] = lp.m_Diffuse.w;
+					col2Specular[0] = lp.m_Specular.x;
+					col2Specular[1] = lp.m_Specular.y;
+					col2Specular[2] = lp.m_Specular.z;
+					col2Specular[3] = lp.m_Specular.w;
+				}
+			}
+		}
+		
+		if(act && ImGui::SliderFloat("Move actor Y slide", &factorY, -8.0f, 8.0f)) {
 			DirectX::XMFLOAT4X4 m_testMatrix;
 			DirectX::XMStoreFloat4x4(
 				&m_testMatrix,
@@ -163,46 +199,8 @@ bool GraphicsClass::Render() {
 			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
 			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
 		}
-		if (ImGui::SliderFloat("Move actor X slide", &factorX, -8.0f, 8.0f)) {
-			DirectX::XMFLOAT4X4 m_testMatrix;
-			DirectX::XMStoreFloat4x4(
-				&m_testMatrix,
-				DirectX::XMMatrixMultiply(
-					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
-					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
-				)
-			);
-			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
-			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
-		}
-
-		if (ImGui::SliderFloat("Move actor Z slide", &factorZ, -8.0f, 8.0f)) {
-			DirectX::XMFLOAT4X4 m_testMatrix;
-			DirectX::XMStoreFloat4x4(
-				&m_testMatrix,
-				DirectX::XMMatrixMultiply(
-					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
-					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
-				)
-			);
-			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
-			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
-		}
-
-		if (ImGui::SliderFloat("Move actor yaw slide", &factorYaw, -180.0f, 180.0f)) {
-			DirectX::XMFLOAT4X4 m_testMatrix;
-			DirectX::XMStoreFloat4x4(
-				&m_testMatrix,
-				DirectX::XMMatrixMultiply(
-					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
-					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
-				)
-			);
-			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
-			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
-		}
-
-		if (ImGui::SliderFloat("Move actor pitch slide", &factorPitch, -180.0f, 180.0f)) {
+		
+		if (act && ImGui::SliderFloat("Move actor X slide", &factorX, -8.0f, 8.0f)) {
 			DirectX::XMFLOAT4X4 m_testMatrix;
 			DirectX::XMStoreFloat4x4(
 				&m_testMatrix,
@@ -215,7 +213,7 @@ bool GraphicsClass::Render() {
 			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
 		}
 
-		if (ImGui::SliderFloat("Move actor roll slide", &factorRoll, -180.0f, 180.0f)) {
+		if (act && ImGui::SliderFloat("Move actor Z slide", &factorZ, -8.0f, 8.0f)) {
 			DirectX::XMFLOAT4X4 m_testMatrix;
 			DirectX::XMStoreFloat4x4(
 				&m_testMatrix,
@@ -226,6 +224,65 @@ bool GraphicsClass::Render() {
 			);
 			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
 			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (act && ImGui::SliderFloat("Move actor yaw slide", &factorYaw, -180.0f, 180.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (act && ImGui::SliderFloat("Move actor pitch slide", &factorPitch, -180.0f, 180.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (act && ImGui::SliderFloat("Move actor roll slide", &factorRoll, -180.0f, 180.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if(act) {
+			unsigned int componentId = ActorComponent::GetIdFromName("LightRenderComponent");
+			std::shared_ptr<LightRenderComponent> rc = MakeStrongPtr(act->GetComponent<LightRenderComponent>(componentId));
+			if(rc && ImGui::ColorEdit4("color ambient", col2Ambient)) {
+				rc->SetAmbient4f(DirectX::XMFLOAT4(col2Ambient));
+				std::shared_ptr<EvtData_Modified_Render_Component> pModifiedRenderEvent(new EvtData_Modified_Render_Component(actId));
+				IEventManager::Get()->VQueueEvent(pModifiedRenderEvent);
+			}
+			if (rc && ImGui::ColorEdit4("color diffuse", col2Diffuse)) {
+				rc->SetDiffuse4f(DirectX::XMFLOAT4(col2Diffuse));
+				std::shared_ptr<EvtData_Modified_Render_Component> pModifiedRenderEvent(new EvtData_Modified_Render_Component(actId));
+				IEventManager::Get()->VQueueEvent(pModifiedRenderEvent);
+			}
+			if (rc && ImGui::ColorEdit4("color specular", col2Specular)) {
+				rc->SetSpecular4f(DirectX::XMFLOAT4(col2Specular));
+				std::shared_ptr<EvtData_Modified_Render_Component> pModifiedRenderEvent(new EvtData_Modified_Render_Component(actId));
+				IEventManager::Get()->VQueueEvent(pModifiedRenderEvent);
+			}
 		}
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);

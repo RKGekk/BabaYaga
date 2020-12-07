@@ -14,6 +14,7 @@ public:
 	CameraNode(DirectX::XMFLOAT4X4* t);
 
 	virtual HRESULT VRender(SceneTree* pScene, ID3D11DeviceContext* deviceContext) override;
+	virtual HRESULT VOnRestore(SceneTree* pScene) override;
 
 	const DirectX::BoundingFrustum& GetFrustum();
 	void SetTarget(std::shared_ptr<SceneNode> pTarget);
