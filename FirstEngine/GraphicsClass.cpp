@@ -156,7 +156,7 @@ bool GraphicsClass::Render() {
 			DirectX::XMStoreFloat4x4(
 				&m_testMatrix,
 				DirectX::XMMatrixMultiply(
-					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorRoll), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorPitch)),
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
 					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
 				)
 			);
@@ -168,7 +168,7 @@ bool GraphicsClass::Render() {
 			DirectX::XMStoreFloat4x4(
 				&m_testMatrix,
 				DirectX::XMMatrixMultiply(
-					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorRoll), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorPitch)),
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
 					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
 				)
 			);
@@ -181,7 +181,7 @@ bool GraphicsClass::Render() {
 			DirectX::XMStoreFloat4x4(
 				&m_testMatrix,
 				DirectX::XMMatrixMultiply(
-					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorRoll), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorPitch)),
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
 					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
 				)
 			);
@@ -194,7 +194,33 @@ bool GraphicsClass::Render() {
 			DirectX::XMStoreFloat4x4(
 				&m_testMatrix,
 				DirectX::XMMatrixMultiply(
-					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorRoll), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorPitch)),
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (ImGui::SliderFloat("Move actor pitch slide", &factorPitch, -180.0f, 180.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (ImGui::SliderFloat("Move actor roll slide", &factorRoll, -180.0f, 180.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
 					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
 				)
 			);
