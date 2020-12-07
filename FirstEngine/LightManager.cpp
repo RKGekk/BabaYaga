@@ -17,7 +17,7 @@ void LightManager::CalcLighting(cbPerFrame* pLighting, SceneNode* pNode) {
 	dl.Ambient = DirectX::XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
 	dl.Diffuse = DirectX::XMFLOAT4(0.9f, 0.9f, 0.9f, 1.0f);
 	dl.Specular = DirectX::XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
-	dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 1.0f);
+	dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 0.0f);
 	dl.Pad = 1.0f;
 	pLighting->dirLight = dl;
 	pLighting->eyePos = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);

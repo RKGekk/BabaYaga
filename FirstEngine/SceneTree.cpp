@@ -17,11 +17,13 @@
 #include "CameraNode.h"
 #include "FreeCameraNode.h"
 #include "SystemClass.h"
+#include "LightManager.h"
 
 SceneTree::SceneTree() {
 
 	m_Root.reset(new RootNode());
 	m_MatrixStack = std::shared_ptr<MatrixStack>(new MatrixStack());
+	m_LightManager = std::shared_ptr<LightManager>(new LightManager());
 
 	IEventManager* pEventMgr = IEventManager::Get();
 	pEventMgr->VAddListener(fastdelegate::MakeDelegate(this, &SceneTree::NewRenderComponentDelegate), EvtData_New_Render_Component::sk_EventType);
@@ -51,6 +53,7 @@ HRESULT SceneTree::OnRender(ID3D11DeviceContext* deviceContext) {
 		// matrix
 
 		m_Camera->VRender(this, deviceContext);
+		m_LightManager->CalcLighting(this);
 
 		if (m_Root->VPreRender(this, deviceContext) == S_OK) {
 			m_Root->VRender(this, deviceContext);
@@ -98,6 +101,11 @@ bool SceneTree::AddChild(unsigned int actorId, std::shared_ptr<ISceneNode> kid) 
 		m_ActorMap[actorId] = kid;
 	}
 
+	shared_ptr<LightNode> pLight = dynamic_pointer_cast<LightNode>(kid);
+	if (pLight != NULL && m_LightManager->m_Lights.size() + 1 < MAXIMUM_LIGHTS_SUPPORTED) {
+		m_LightManager->m_Lights.push_back(pLight);
+	}
+
 	return m_Root->VAddChild(kid);
 }
 
@@ -106,6 +114,10 @@ bool SceneTree::RemoveChild(unsigned int actorId) {
 		return false;
 	}
 	std::shared_ptr<ISceneNode> kid = FindSceneNode(actorId);
+	shared_ptr<LightNode> pLight = dynamic_pointer_cast<LightNode>(kid);
+	if (pLight != NULL) {
+		m_LightManager->m_Lights.remove(pLight);
+	}
 	m_ActorMap.erase(actorId);
 	return m_Root->VRemoveChild(actorId);
 }
@@ -168,4 +180,8 @@ const DirectX::XMFLOAT4X4 SceneTree::GetTopMatrix() {
 
 const DirectX::XMFLOAT4X4 SceneTree::GetTopMatrixT() {
 	return m_MatrixStack->GetTopT();
+}
+
+std::shared_ptr<LightManager> SceneTree::GetLightManager() {
+	return m_LightManager;
 }

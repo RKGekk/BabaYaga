@@ -9,7 +9,7 @@
 #include "cbPerFrame.h"
 
 using Lights = std::list<std::shared_ptr<LightNode>>;
-#define MAXIMUM_LIGHTS_SUPPORTED (3)
+#define MAXIMUM_LIGHTS_SUPPORTED (1)
 
 class LightManager {
 	friend class SceneTree;

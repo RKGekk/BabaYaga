@@ -61,11 +61,11 @@
       </MeshComponent>
     </Actor>-->
 
-    <!--<Actor type="LightRenderComponent" resource="LightRenderComponent.xml">
+    <Actor type="LightRenderComponent" resource="LightRenderComponent.xml">
 
       <TransformComponent>
         <Position x="0.0" y="0.0" z="-1.0"/>
-        --><!-- angleType rad, deg --><!--
+        <!-- angleType rad, deg -->
         <YawPitchRoll angleType="deg" x="0" y="0" z="0"/>
         <Direction x="0.0" y="0.0" z="1.0"/>
       </TransformComponent>
@@ -81,7 +81,7 @@
         </Light>
       </LightRenderComponent>
 
-    </Actor>-->
+    </Actor>
     
   </StaticActors>
 </World>

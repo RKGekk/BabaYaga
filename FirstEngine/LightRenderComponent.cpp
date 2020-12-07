@@ -21,6 +21,21 @@ const std::string& LightRenderComponent::VGetName() const {
 bool LightRenderComponent::VDelegateInit(TiXmlElement* pData) {
 	TiXmlElement* pLight = pData->FirstChildElement("Light");
 
+	m_Props.m_LightType = LightType::DIRECTIONAL;
+	const char* at = pLight->Attribute("type");
+	std::string lightType(at == nullptr ? "" : at);
+	if(!lightType.empty()) {
+		if(lightType == "DirectionalLight") {
+			m_Props.m_LightType = LightType::DIRECTIONAL;
+		}
+		if (lightType == "PointLight") {
+			m_Props.m_LightType = LightType::POINT;
+		}
+		if (lightType == "SpotLight") {
+			m_Props.m_LightType = LightType::SPOT;
+		}
+	}
+
 	double temp;
 	TiXmlElement* pAttenuationNode = NULL;
 	pAttenuationNode = pLight->FirstChildElement("Attenuation");

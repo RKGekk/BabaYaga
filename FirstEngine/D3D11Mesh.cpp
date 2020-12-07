@@ -2,6 +2,7 @@
 #include "FreeCameraNode.h"
 #include "SceneTree.h"
 #include "memoryUtility.h"
+#include "LightManager.h"
 
 D3D11Mesh::D3D11Mesh(BaseRenderComponent* renderComponent, DirectX::XMFLOAT4X4* pMatrix, ID3D11Device* device) : D3D11Drawable(renderComponent, pMatrix) {
 	MeshRenderComponent* mrc = static_cast<MeshRenderComponent*>(renderComponent);
@@ -100,15 +101,20 @@ HRESULT D3D11Mesh::VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceCont
 	DirectX::XMStoreFloat4x4(&mt.worldInvTranspose, DirectX::XMMatrixInverse(&det, A));
 	m_cbvs->Update(deviceContext, mt);
 
-	cbPerFrame lt;
-	DirectionalLight dl;
-	dl.Ambient = DirectX::XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
-	dl.Diffuse = DirectX::XMFLOAT4(0.9f, 0.9f, 0.9f, 1.0f);
-	dl.Specular = DirectX::XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
 
-	dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 1.0f);
-	lt.dirLight = dl;
-	lt.eyePos = camera->GetPosition3f();
+	std::shared_ptr<LightManager> lightManager = pScene->GetLightManager();
+	
+
+	cbPerFrame lt;
+	lightManager->CalcLighting(&lt, this);
+	//DirectionalLight dl;
+	//dl.Ambient = DirectX::XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
+	//dl.Diffuse = DirectX::XMFLOAT4(0.9f, 0.9f, 0.9f, 1.0f);
+	//dl.Specular = DirectX::XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
+	//
+	//dl.Direction = DirectX::XMFLOAT3(0.0f, -1.0f, 1.0f);
+	//lt.dirLight = dl;
+	//lt.eyePos = camera->GetPosition3f();
 	m_cbps1->Update(deviceContext, lt);
 
 	return S_OK;
