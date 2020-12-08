@@ -787,5 +787,17 @@
     <None Include="Earth.obj">
       <Filter>Resources</Filter>
     </None>
+    <None Include="girlBody.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="girlBody.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="toonGirlBodyAlbedo.tga">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="toonGirlHeadAlbedo.tga">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>

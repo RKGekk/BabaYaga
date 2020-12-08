@@ -181,6 +181,14 @@ Texture2D shaderTexture         : register(t0);
 //Texture2D shaderSpecularTexture : register(t1);
 //Texture2D shaderNormalTexture	: register(t2);
 
+cbuffer MatrixBuffer : register(b0) {
+	matrix worldMatrix;
+	matrix viewMatrix;
+	matrix projectionMatrix;
+	matrix worldInvTranspose; // for converting normals
+	Material gMaterial;
+};
+
 cbuffer cbPerFrame : register(b1) {
 	DirectionalLight	gDirLight;
 	SpotLight			gSpotLight;
@@ -212,17 +220,25 @@ float4 PixelShaderFX(PixelInputType input) : SV_TARGET{
 
 	float3 toEyeW = normalize(gEyePosW - input.PosW);
 
-	Material mt;
-	mt.Ambient = float4(0.1f, 0.1f, 0.1f, 1.0f);
-	//mt.Diffuse = float4(0.9f, 0.9f, 0.9f, 1.0f);
+	Material mt = gMaterial;
+	////--mt.Ambient = float4(0.1f, 0.1f, 0.1f, 1.0f);
+	////mt.Diffuse = float4(0.9f, 0.9f, 0.9f, 1.0f);
+	////--mt.Diffuse = shaderTexture.Sample(SampleType, input.tex);
 	mt.Diffuse = shaderTexture.Sample(SampleType, input.tex);
-	//mt.Diffuse = shaderSpecularTexture.Sample(SampleType, input.tex);
-	//mt.Diffuse = shaderNormalTexture.Sample(SampleType, input.tex);
-	//mt.Specular = shaderSpecularTexture.Sample(SampleType, input.tex) + 0.3f;
-	mt.Specular = shaderTexture.Sample(SampleType, input.tex);
-	//mt.Specular = float4(0.8f, 0.8f, 0.8f, 1.0f);
-	mt.Specular.w = 16.0f;
-	mt.Reflect = float4(0.1f, 0.1f, 0.1f, 1.0f);
+	////mt.Diffuse = shaderSpecularTexture.Sample(SampleType, input.tex);
+	////mt.Diffuse = shaderNormalTexture.Sample(SampleType, input.tex);
+	////mt.Specular = shaderSpecularTexture.Sample(SampleType, input.tex) + 0.3f;
+	////--mt.Specular = shaderTexture.Sample(SampleType, input.tex);
+	////mt.Specular = float4(0.8f, 0.8f, 0.8f, 1.0f);
+	////--mt.Specular.w = 16.0f;
+	////mt.Reflect = float4(0.1f, 0.1f, 0.1f, 1.0f);
+	//Material mt;
+	//mt.Ambient = float4(0.1f, 0.1f, 0.1f, 1.0f);
+	//mt.Ambient = gMaterial.Ambient;
+	//mt.Diffuse = shaderTexture.Sample(SampleType, input.tex);
+	//mt.Specular = shaderTexture.Sample(SampleType, input.tex);
+	//mt.Specular.w = 16.0f;
+	//mt.Reflect = float4(0.1f, 0.1f, 0.1f, 1.0f);
 
 	//float3 normalMapSample = shaderNormalTexture.Sample(SampleType, input.tex).rgb;
 	//float3 bumpedNormalW = NormalSampleToWorldSpace(normalMapSample, input.NormalW, input.TangentW);

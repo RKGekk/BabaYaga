@@ -31,6 +31,9 @@ void LightManager::CalcLighting(cbPerFrame* pLighting, SceneNode* pNode) {
 		dl.Diffuse = light->m_Diffuse;
 		dl.Specular = light->m_Specular;
 		dl.Direction = lightNode->GetDirection();
+		/*if(dl.Direction.z != 1.0f) {
+			std::string gff = "";
+		}*/
 		dl.Pad = 1.0f;
 		pLighting->dirLight = dl;
 		pLighting->eyePos = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);

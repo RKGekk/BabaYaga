@@ -3,6 +3,7 @@
 #include "SceneTree.h"
 #include "memoryUtility.h"
 #include "LightManager.h"
+#include "MeshComponent.h"
 
 D3D11Mesh::D3D11Mesh(BaseRenderComponent* renderComponent, DirectX::XMFLOAT4X4* pMatrix, ID3D11Device* device) : D3D11Drawable(renderComponent, pMatrix) {
 	MeshRenderComponent* mrc = static_cast<MeshRenderComponent*>(renderComponent);
@@ -99,8 +100,24 @@ HRESULT D3D11Mesh::VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceCont
 	A.r[3] = DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f);
 	DirectX::XMVECTOR det = DirectX::XMMatrixDeterminant(A);
 	DirectX::XMStoreFloat4x4(&mt.worldInvTranspose, DirectX::XMMatrixInverse(&det, A));
-	m_cbvs->Update(deviceContext, mt);
 
+	unsigned int componentId = ActorComponent::GetIdFromName("MeshComponent");
+	std::shared_ptr<MeshComponent> rc = MakeStrongPtr(m_RenderComponent->GetOwner()->GetComponent<MeshComponent>(componentId));
+	const tinyobj::material_t& material = rc->GetMaterials()[0];
+	mt.material.Ambient.x = material.ambient[0];
+	mt.material.Ambient.y = material.ambient[1];
+	mt.material.Ambient.z = material.ambient[2];
+	mt.material.Diffuse.x = material.diffuse[0];
+	mt.material.Diffuse.y = material.diffuse[1];
+	mt.material.Diffuse.z = material.diffuse[2];
+	mt.material.Specular.x = material.specular[0];
+	mt.material.Specular.y = material.specular[1];
+	mt.material.Specular.z = material.specular[2];
+	mt.material.Specular.w = material.shininess;
+	mt.material.Reflect = DirectX::XMFLOAT4(0.1f, 0.1f, 0.1f, 1.0f);
+
+	m_cbvs->Update(deviceContext, mt);
+	m_cbps0->Update(deviceContext, mt);
 
 	std::shared_ptr<LightManager> lightManager = pScene->GetLightManager();
 	
