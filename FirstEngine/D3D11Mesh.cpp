@@ -99,7 +99,7 @@ HRESULT D3D11Mesh::VPreRender(SceneTree* pScene, ID3D11DeviceContext* deviceCont
 	DirectX::XMMATRIX A = DirectX::XMLoadFloat4x4(&mt.worldMatrix);
 	A.r[3] = DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f);
 	DirectX::XMVECTOR det = DirectX::XMMatrixDeterminant(A);
-	DirectX::XMStoreFloat4x4(&mt.worldInvTranspose, DirectX::XMMatrixInverse(&det, A));
+	DirectX::XMStoreFloat4x4(&mt.worldInvTranspose, DirectX::XMMatrixTranspose(DirectX::XMMatrixInverse(&det, A)));
 
 	unsigned int componentId = ActorComponent::GetIdFromName("MeshComponent");
 	std::shared_ptr<MeshComponent> rc = MakeStrongPtr(m_RenderComponent->GetOwner()->GetComponent<MeshComponent>(componentId));
