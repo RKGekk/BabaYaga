@@ -799,5 +799,29 @@
     <None Include="toonGirlHeadAlbedo.tga">
       <Filter>Resources</Filter>
     </None>
+    <None Include="girlBody1.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="girlBody1.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="girlDress.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="girlDress.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="girlHair.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="girlHair.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="girlHead.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="girlHead.obj">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>
