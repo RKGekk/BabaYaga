@@ -823,5 +823,14 @@
     <None Include="girlHead.obj">
       <Filter>Resources</Filter>
     </None>
+    <None Include="2k_earth_daymap1.bmp">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="wall.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="wall.obj">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>

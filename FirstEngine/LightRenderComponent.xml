@@ -6,6 +6,7 @@
     <!-- angleType rad, deg -->
     <YawPitchRoll angleType="deg" x="0" y="0" z="0"/>
     <Direction x="0.0" y="0.0" z="1.0"/>
+    <Scale x="1.000000" y="1.000000" z="1.000000" />
   </TransformComponent>
 
   <!-- DirectionalLight, PointLight, SpotLight -->

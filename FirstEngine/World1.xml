@@ -18,7 +18,7 @@
 
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
-        <Position x="0.000000" y="1.000000" z="1.000000" />
+        <Position x="0.000000" y="0.500000" z="1.000000" />
         <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
       </TransformComponent>
       <MeshRenderComponent>
@@ -33,7 +33,7 @@
 
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
-        <Position x="0.000000" y="1.000000" z="1.000000" />
+        <Position x="0.000000" y="0.500000" z="1.000000" />
         <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
       </TransformComponent>
       <MeshRenderComponent>
@@ -48,7 +48,7 @@
 
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
-        <Position x="0.000000" y="1.000000" z="1.000000" />
+        <Position x="0.000000" y="0.500000" z="1.000000" />
         <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
       </TransformComponent>
       <MeshRenderComponent>
@@ -63,7 +63,7 @@
 
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
-        <Position x="0.000000" y="1.000000" z="1.000000" />
+        <Position x="0.000000" y="0.504000" z="0.997000" />
         <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
       </TransformComponent>
       <MeshRenderComponent>
@@ -78,7 +78,7 @@
 
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
-        <Position x="0.000000" y="0.000000" z="0.000000" />
+        <Position x="0.000000" y="0.000000" z="16.000000" />
         <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
       </TransformComponent>
       <MeshRenderComponent>
@@ -93,8 +93,8 @@
 
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
-        <Position x="0.000000" y="10.000000" z="34.000000" />
-        <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
+        <Position x="0.000000" y="16.000000" z="34.000000" />
+        <YawPitchRoll x="-71.000000" y="-31.000000" z="10.000000" />
       </TransformComponent>
       <MeshRenderComponent>
         <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
@@ -103,6 +103,38 @@
       </MeshRenderComponent>
       <MeshComponent>
         <Obj>Earth.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="-2.000000" y="-0.500000" z="-5.000000" />
+        <YawPitchRoll x="-11.000000" y="0.000000" z="-9.000000" />
+        <Scale x="1.000000" y="1.000000" z="1.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>wall.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="2.000000" y="-0.500000" z="-6.000000" />
+        <YawPitchRoll x="0.000000" y="0.000000" z="-25.000000" />
+        <Scale x="1.000000" y="1.000000" z="1.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>wall.obj</Obj>
       </MeshComponent>
     </Actor>
     
@@ -126,7 +158,7 @@
       <TransformComponent>
         <Position x="0.0" y="0.0" z="-1.0"/>
         <!-- angleType rad, deg -->
-        <YawPitchRoll angleType="deg" x="0" y="0" z="0"/>
+        <YawPitchRoll angleType="deg" x="-14" y="11" z="0"/>
         <Direction x="0.0" y="0.0" z="1.0"/>
       </TransformComponent>
 

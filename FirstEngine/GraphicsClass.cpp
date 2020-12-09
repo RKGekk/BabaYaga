@@ -164,6 +164,9 @@ bool GraphicsClass::Render() {
 				factorX = rc->GetPosition3f().x;
 				factorY = rc->GetPosition3f().y;
 				factorZ = rc->GetPosition3f().z;
+				scaleX = rc->GetScale3f().x;
+				scaleY = rc->GetScale3f().y;
+				scaleZ = rc->GetScale3f().z;
 				factorYaw = DirectX::XMConvertToDegrees(rc->GetYawPitchRoll3f().x);
 				factorPitch = DirectX::XMConvertToDegrees(rc->GetYawPitchRoll3f().y);
 				factorRoll = DirectX::XMConvertToDegrees(rc->GetYawPitchRoll3f().z);
@@ -214,6 +217,45 @@ bool GraphicsClass::Render() {
 		}
 
 		if (act && ImGui::SliderFloat("Move actor Z slide", &factorZ, -8.0f, 8.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (act && ImGui::SliderFloat("Scale actor Y slide", &scaleY, -8.0f, 8.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (act && ImGui::SliderFloat("Scale actor X slide", &scaleX, -8.0f, 8.0f)) {
+			DirectX::XMFLOAT4X4 m_testMatrix;
+			DirectX::XMStoreFloat4x4(
+				&m_testMatrix,
+				DirectX::XMMatrixMultiply(
+					DirectX::XMMatrixRotationRollPitchYaw(DirectX::XMConvertToRadians(factorPitch), DirectX::XMConvertToRadians(factorYaw), DirectX::XMConvertToRadians(factorRoll)),
+					DirectX::XMMatrixMultiply(DirectX::XMMatrixIdentity(), DirectX::XMMatrixTranslation(factorX, factorY, factorZ))
+				)
+			);
+			std::shared_ptr<EvtData_Move_Actor> pMoveActorEvent(new EvtData_Move_Actor(actId, m_testMatrix));
+			IEventManager::Get()->VQueueEvent(pMoveActorEvent);
+		}
+
+		if (act && ImGui::SliderFloat("Scale actor Z slide", &scaleZ, -8.0f, 8.0f)) {
 			DirectX::XMFLOAT4X4 m_testMatrix;
 			DirectX::XMStoreFloat4x4(
 				&m_testMatrix,

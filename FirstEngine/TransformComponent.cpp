@@ -37,6 +37,14 @@ DirectX::XMVECTOR TransformComponent::GetPosition() const {
     return DirectX::XMVectorSet(m_transform.m[3][0], m_transform.m[3][1], m_transform.m[3][2], 1.0f);
 }
 
+DirectX::XMFLOAT3 TransformComponent::GetScale3f() const {
+    return DirectX::XMFLOAT3(m_scale.x, m_scale.y, m_scale.z);
+}
+
+DirectX::XMVECTOR TransformComponent::GetScale() const {
+    return DirectX::XMVectorSet(m_scale.x, m_scale.y, m_scale.z, 1.0f);
+}
+
 void TransformComponent::SetPosition3f(const DirectX::XMFLOAT3& pos) {
     m_transform.m[3][0] = pos.x;
     m_transform.m[3][1] = pos.y;
@@ -58,6 +66,22 @@ void TransformComponent::SetPosition(const DirectX::FXMVECTOR& pos) {
     m_transform.m[3][1] = temp.y;
     m_transform.m[3][2] = temp.z;
     m_transform.m[3][3] = 1.0f;
+}
+
+void TransformComponent::SetScale3f(const DirectX::XMFLOAT3& sclae) {
+    m_scale.x = sclae.x;
+    m_scale.y = sclae.y;
+    m_scale.z = sclae.z;
+    m_scale.w = 1.0f;
+}
+
+void TransformComponent::SetScale(const DirectX::FXMVECTOR& scale) {
+    DirectX::XMFLOAT3 temp;
+    DirectX::XMStoreFloat3(&temp, scale);
+    m_scale.x = temp.x;
+    m_scale.y = temp.y;
+    m_scale.z = temp.z;
+    m_scale.w = 1.0f;
 }
 
 DirectX::XMFLOAT3 TransformComponent::GetLookAt3f() const {
@@ -175,12 +199,28 @@ bool TransformComponent::VInit(TiXmlElement* pData) {
         direction = DirectX::XMFLOAT4(0.0f, 0.0f, 1.0f, 0.0f);
     }
 
+    DirectX::XMFLOAT4 scale;
+    TiXmlElement* pScaleElement = pData->FirstChildElement("Scale");
+    if (pScaleElement) {
+        double x = 0.0;
+        double y = 0.0;
+        double z = 0.0;
+        pScaleElement->Attribute("x", &x);
+        pScaleElement->Attribute("y", &y);
+        pScaleElement->Attribute("z", &z);
+        scale = DirectX::XMFLOAT4(x, y, z, 1.0f);
+    }
+    else {
+        scale = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+    }
+
     DirectX::XMMATRIX translationXM = DirectX::XMMatrixTranslation(position.x, position.y, position.z);
     DirectX::XMMATRIX rotationXM = DirectX::XMMatrixRotationRollPitchYaw(yawPitchRoll.y, yawPitchRoll.x, yawPitchRoll.z);
     //DirectX::XMVECTOR directionXM = DirectX::XMLoadFloat4(&direction);
 
     //DirectX::XMStoreFloat4(&m_direction, DirectX::XMVector4Transform(DirectX::XMVector4Normalize(directionXM), rotationXM));
     m_direction = direction;
+    m_scale = scale;
     DirectX::XMStoreFloat4x4(&m_transform, DirectX::XMMatrixMultiply(rotationXM, translationXM));
 
     return true;

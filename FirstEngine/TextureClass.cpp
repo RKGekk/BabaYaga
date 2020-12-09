@@ -369,6 +369,7 @@ bool TextureClass::LoadBmp(const std::string& filename) {
 	if (st != Gdiplus::Status::Ok) {
 		return false;
 	}
+	bitmap.RotateFlip(Gdiplus::Rotate180FlipNone);
 
 	m_width = bitmap.GetWidth();
 	m_height = bitmap.GetHeight();

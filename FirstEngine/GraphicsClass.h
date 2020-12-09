@@ -60,6 +60,9 @@ private:
 	std::unique_ptr<Scene1>						m_Scene1;
 	std::unique_ptr<Scene3>						m_Scene3;
 	int actId = 0;
+	float scaleX = 0.0f;
+	float scaleY = 0.0f;
+	float scaleZ = 0.0f;
 	float factorX = 0.0f;
 	float factorY = 0.0f;
 	float factorZ = 0.0f;

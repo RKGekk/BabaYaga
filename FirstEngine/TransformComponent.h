@@ -10,6 +10,7 @@ class TransformComponent : public ActorComponent {
 private:
     DirectX::XMFLOAT4X4 m_transform;
     DirectX::XMFLOAT4 m_direction;
+    DirectX::XMFLOAT4 m_scale;
 
 public:
     static const std::string g_Name;
@@ -29,9 +30,15 @@ public:
     DirectX::XMFLOAT3 GetPosition3f() const;
     DirectX::XMVECTOR GetPosition() const;
 
+    DirectX::XMFLOAT3 GetScale3f() const;
+    DirectX::XMVECTOR GetScale() const;
+
     void SetPosition3f(const DirectX::XMFLOAT3& pos);
     void SetPosition4x4f(const DirectX::XMFLOAT4X4& pos);
     void SetPosition(const DirectX::FXMVECTOR& pos);
+
+    void SetScale3f(const DirectX::XMFLOAT3& sclae);
+    void SetScale(const DirectX::FXMVECTOR& scale);
 
     DirectX::XMFLOAT3 GetLookAt3f() const;
     DirectX::XMVECTOR GetLookAt() const;
