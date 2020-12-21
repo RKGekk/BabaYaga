@@ -62,6 +62,14 @@ void ComputeDirectionalLight(Material mat, DirectionalLight L, float3 normal, fl
 	if (diffuseFactor > 0.0f) {
 		float3 v = reflect(-lightVec, normal);
 		float specFactor = pow(max(dot(v, toEye), 0.0f), mat.Specular.w);
+		
+		//if (diffuseFactor > 0.5f) diffuseFactor = 1.0f;
+		//if (diffuseFactor > 0.15f && diffuseFactor <= 0.5f) diffuseFactor = 0.5f;
+		//if (diffuseFactor < 0.15f) diffuseFactor = 0.0f;
+		
+		//if (specFactor > 0.8f) specFactor = 1.0f;
+		//if (specFactor > 0.1f && specFactor <= 0.8f) specFactor = 0.5f;
+		//if (specFactor < 0.1f) specFactor = 0.0f;
 
 		diffuse = diffuseFactor * mat.Diffuse * L.Diffuse;
 		spec = specFactor * mat.Specular * L.Specular;
@@ -206,7 +214,7 @@ struct PixelInputType {
 	float3 TangentW : TANGENT;
 };
 
-float4 PixelShaderFX(PixelInputType input) : SV_TARGET{
+float4 PixelShaderFX(PixelInputType input) : SV_TARGET {
 
 	//float4 textureColor;
 

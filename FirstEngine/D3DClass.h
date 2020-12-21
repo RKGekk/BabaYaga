@@ -27,6 +27,7 @@ public:
 
 	ID3D11Device*			GetDevice();
 	ID3D11DeviceContext*	GetDeviceContext();
+	IDXGISwapChain*			GetSwapChain();
 
 	void GetVideoCardInfo(char*, int&);
 
@@ -35,16 +36,9 @@ private:
 	int m_videoCardMemory;
 	char m_videoCardDescription[128];
 
-	Microsoft::WRL::ComPtr<IDXGIFactory>			m_factory;
+	Microsoft::WRL::ComPtr<IDXGIFactory>				m_factory;
 
-	Microsoft::WRL::ComPtr<IDXGISwapChain>			m_swapChain;
-	Microsoft::WRL::ComPtr<ID3D11Device>			m_device;
-	Microsoft::WRL::ComPtr<ID3D11DeviceContext>		m_deviceContext;
-
-	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>	m_renderTargetView;
-	Microsoft::WRL::ComPtr<ID3D11Texture2D>			m_depthStencilBuffer;
-
-	Microsoft::WRL::ComPtr<ID3D11DepthStencilState>	m_depthStencilState;
-	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	m_depthStencilView;
-	Microsoft::WRL::ComPtr<ID3D11RasterizerState>	m_rasterState;
+	Microsoft::WRL::ComPtr<IDXGISwapChain>				m_swapChain;
+	Microsoft::WRL::ComPtr<ID3D11Device>				m_device;
+	Microsoft::WRL::ComPtr<ID3D11DeviceContext>			m_deviceContext;	
 };

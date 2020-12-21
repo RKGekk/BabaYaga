@@ -2,11 +2,11 @@
 
 #include "FreeCameraNode.h"
 
-Scene3::Scene3(ID3D11Device* device) : Scene("First s") {
+Scene3::Scene3(const EngineOptions& options, ID3D11Device* device, ID3D11DeviceContext* deviceContext) : Scene("First s") {
 
 	std::shared_ptr<FreeCameraNode> pCam = std::shared_ptr<FreeCameraNode>(new FreeCameraNode());
 	pCam->SetPosition(0.0f, 2.0f, 0.0f);
-	m_sceneTree = std::make_unique<SceneTree>();
+	m_sceneTree = std::make_unique<SceneTree>(options, device, deviceContext);
 	m_sceneTree->SetCamera(pCam);
 }
 
@@ -51,6 +51,10 @@ void Scene3::Update(ID3D11DeviceContext* deviceContext, InputClass& kbd, Mouse& 
 
 
 	m_sceneTree->OnUpdate(dt, deviceContext);
+}
+
+HRESULT Scene3::OnRestore(const EngineOptions& options, ID3D11Device* device, ID3D11DeviceContext* deviceContext) {
+	return m_sceneTree->OnRestore(options, device, deviceContext);
 }
 
 void Scene3::Draw(ID3D11DeviceContext* deviceContext) {

@@ -163,6 +163,7 @@
     <ClInclude Include="CountProcess.h" />
     <ClInclude Include="D3D11Drawable.h" />
     <ClInclude Include="D3D11Mesh.h" />
+    <ClInclude Include="D3D11Offscreen.h" />
     <ClInclude Include="D3DLightNode11.h" />
     <ClInclude Include="DDSTextureLoader.h" />
     <ClInclude Include="DepthStencilState.h" />
@@ -285,6 +286,7 @@
     <ClCompile Include="crc32.c" />
     <ClCompile Include="D3D11Drawable.cpp" />
     <ClCompile Include="D3D11Mesh.cpp" />
+    <ClCompile Include="D3D11Offscreen.cpp" />
     <ClCompile Include="D3DClass.cpp" />
     <ClCompile Include="D3DLightNode11.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
@@ -481,6 +483,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="2k_earth_daymap1.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PostVS.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PostPS.fx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

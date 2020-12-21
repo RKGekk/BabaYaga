@@ -420,6 +420,9 @@
     <ClInclude Include="LightType.h">
       <Filter>NodeManager</Filter>
     </ClInclude>
+    <ClInclude Include="D3D11Offscreen.h">
+      <Filter>NodeManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -719,6 +722,9 @@
     <ClCompile Include="LightManager.cpp">
       <Filter>NodeManager</Filter>
     </ClCompile>
+    <ClCompile Include="D3D11Offscreen.cpp">
+      <Filter>NodeManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="EngineOptions.xml">
@@ -831,6 +837,12 @@
     </None>
     <None Include="wall.obj">
       <Filter>Resources</Filter>
+    </None>
+    <None Include="PostPS.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="PostVS.fx">
+      <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

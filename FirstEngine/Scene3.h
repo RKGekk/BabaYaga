@@ -13,9 +13,10 @@
 class Scene3 : Scene {
 
 public:
-	Scene3(ID3D11Device* device);
+	Scene3(const EngineOptions& options, ID3D11Device* device, ID3D11DeviceContext* deviceContext);
 
 	virtual void Update(ID3D11DeviceContext* deviceContext, InputClass& kbd, Mouse& mouse, float dt, float tt) override;
+	virtual HRESULT OnRestore(const EngineOptions& options, ID3D11Device* device, ID3D11DeviceContext* deviceContext) override;
 	virtual void Draw(ID3D11DeviceContext* deviceContext) override;
 
 private:

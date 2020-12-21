@@ -57,7 +57,9 @@ bool GraphicsClass::Initialize(const EngineOptions& options, HWND hwnd) {
 		{L"BasicNormalMapPixelShader.fx", ShaderClass::ShaderType::PixelShader},
 		{L"BasicNormalMapVertexShader.fx", ShaderClass::ShaderType::VertexShader},
 		{L"SkyPixelShader.fx", ShaderClass::ShaderType::PixelShader},
-		{L"SkyVertexShader.fx", ShaderClass::ShaderType::VertexShader}
+		{L"SkyVertexShader.fx", ShaderClass::ShaderType::VertexShader},
+		{L"PostPS.fx", ShaderClass::ShaderType::PixelShader},
+		{L"PostVS.fx", ShaderClass::ShaderType::VertexShader}
 	};
 	result = m_ShaderHolder->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), shaders);
 	if (!result) {
@@ -66,7 +68,7 @@ bool GraphicsClass::Initialize(const EngineOptions& options, HWND hwnd) {
 	}
 
 	//m_Scene1 = std::make_unique<Scene1>(GetD3D()->GetDevice());
-	m_Scene3 = std::make_unique<Scene3>(GetD3D()->GetDevice());
+	m_Scene3 = std::make_unique<Scene3>(options, GetD3D()->GetDevice(), GetD3D()->GetDeviceContext());
 
 	//m_sceneNumber = 1;
 
@@ -89,6 +91,7 @@ void GraphicsClass::OnResize(const EngineOptions& options) {
 	mClientHeight = options.m_screenHeight;
 
 	m_Direct3D->OnResize(options);
+	m_Scene3->OnRestore(options, m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 }
 
 void GraphicsClass::Update(InputClass& kbd, Mouse& mouse, const GameTimer& gt) {
