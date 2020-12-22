@@ -26,7 +26,7 @@ protected:
 	std::map<unsigned int, std::shared_ptr<Actor>>	m_actors;
 	std::shared_ptr<ActorFactory>					m_pActorFactory;
 	BaseEngineState									m_State;			// engine state: loading, running, etc.
-	float											m_Lifetime;			//indicates how long this engine has been in session
+	float											m_Lifetime;			// indicates how long this engine has been in session
 	std::shared_ptr<ProcessManager>					m_pProcessManager;	// a engine logic entity
 
 public:

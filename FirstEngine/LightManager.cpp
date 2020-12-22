@@ -10,6 +10,7 @@ void LightManager::CalcLighting(SceneTree* pScene) {
 		m_vLightDir[count] = DirectX::XMFLOAT4(lightDir.x, lightDir.y, lightDir.z, 1.0f);
 		m_vLightDiffuse[count] = light->VGetLight()->m_Diffuse;
 	}
+	m_Camera = pScene->GetCamera();
 }
 
 void LightManager::CalcLighting(cbPerFrame* pLighting, SceneNode* pNode) {
@@ -36,7 +37,8 @@ void LightManager::CalcLighting(cbPerFrame* pLighting, SceneNode* pNode) {
 		}*/
 		dl.Pad = 1.0f;
 		pLighting->dirLight = dl;
-		pLighting->eyePos = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+		//pLighting->eyePos = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+		pLighting->eyePos = m_Camera->GetPosition3f();
 	}
 }
 

@@ -75,6 +75,21 @@
         <Obj>girlDress.obj</Obj>
       </MeshComponent>
     </Actor>
+    
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="0.000000" y="1.500000" z="3.500000" />
+        <YawPitchRoll x="-4.000000" y="-38.000000" z="33.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>cube.obj</Obj>
+      </MeshComponent>
+    </Actor>
 
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
@@ -108,8 +123,8 @@
 
     <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
       <TransformComponent>
-        <Position x="-2.000000" y="-0.500000" z="-5.000000" />
-        <YawPitchRoll x="-11.000000" y="0.000000" z="-9.000000" />
+        <Position x="-2.500000" y="-0.500000" z="-5.000000" />
+        <YawPitchRoll x="-7.000000" y="0.000000" z="-9.000000" />
         <Scale x="1.000000" y="1.000000" z="1.000000" />
       </TransformComponent>
       <MeshRenderComponent>
@@ -135,6 +150,86 @@
       </MeshRenderComponent>
       <MeshComponent>
         <Obj>wall.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="96.000000" y="2.000000" z="0.000000" />
+        <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
+        <Scale x="1.000000" y="1.000000" z="1.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader2.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader2.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>cryoRoom.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="96.000000" y="2.000000" z="43.000000" />
+        <YawPitchRoll x="0.000000" y="0.000000" z="0.000000" />
+        <Scale x="1.000000" y="1.000000" z="1.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader2.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader2.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>cryoRoom.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="86.000000" y="2.000000" z="2.000000" />
+        <YawPitchRoll x="0.000000" y="90.000000" z="0.000000" />
+        <Scale x="1.000000" y="1.000000" z="1.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader3.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader3.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>ring3.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="86.000000" y="2.000000" z="2.000000" />
+        <YawPitchRoll x="0.000000" y="90.000000" z="0.000000" />
+        <Scale x="1.000000" y="1.000000" z="1.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader2.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader2.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>ring4.obj</Obj>
+      </MeshComponent>
+    </Actor>
+
+    <Actor type="MeshRenderComponent" resource="MeshRenderComponent.xml">
+      <TransformComponent>
+        <Position x="86.000000" y="2.000000" z="2.000000" />
+        <YawPitchRoll x="-4.000000" y="-38.000000" z="33.000000" />
+        <Scale x="1.000000" y="1.000000" z="1.000000" />
+      </TransformComponent>
+      <MeshRenderComponent>
+        <Color r="0.400000" g="0.400000" b="0.400000" a="1.000000" />
+        <PixelShader>BasicNormalMapPixelShader.fx</PixelShader>
+        <VertexShader>BasicNormalMapVertexShader.fx</VertexShader>
+      </MeshRenderComponent>
+      <MeshComponent>
+        <Obj>smallCube.obj</Obj>
       </MeshComponent>
     </Actor>
     

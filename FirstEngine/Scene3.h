@@ -23,4 +23,5 @@ private:
 	
 	Mouse::MouseTracker				m_MouseTracker;
 	std::unique_ptr<SceneTree>		m_sceneTree;
+	std::shared_ptr<FreeCameraNode> m_Cam;
 };

@@ -7,6 +7,7 @@
 #include "SceneTree.h"
 #include "LightNode.h"
 #include "cbPerFrame.h"
+#include "FreeCameraNode.h"
 
 using Lights = std::list<std::shared_ptr<LightNode>>;
 #define MAXIMUM_LIGHTS_SUPPORTED (1)
@@ -19,6 +20,7 @@ protected:
 	DirectX::XMFLOAT4 m_vLightDir[MAXIMUM_LIGHTS_SUPPORTED];
 	DirectX::XMFLOAT4 m_vLightDiffuse[MAXIMUM_LIGHTS_SUPPORTED];
 	DirectX::XMFLOAT4 m_vLightAmbient;
+	std::shared_ptr<FreeCameraNode> m_Camera;
 
 public:
 	void CalcLighting(SceneTree* pScene);

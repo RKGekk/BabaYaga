@@ -844,5 +844,68 @@
     <None Include="PostVS.fx">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="cube.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="cube.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="white.bmp">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="TLFN - 01 Snake city.mp3">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="gray.bmp">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="cryoRoom.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="cryoRoom.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="BasicNormalMapVertexShader2.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="BasicNormalMapPixelShader2.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="ring3.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="ring3.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="ring4.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="ring4.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="metal-ventilation1-albedo.bmp">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="metal-ventilation1-normal-ogl.bmp">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="sheep.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="sheep.obj">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="BasicNormalMapPixelShader3.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="BasicNormalMapVertexShader3.fx">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="smallCube.mtl">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="smallCube.obj">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>
